@@ -1,0 +1,460 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		CAF7D4A3199D4C18006B06F5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CAF7D4A2199D4C18006B06F5 /* main.m */; };
+		CAF7D4A6199D4C18006B06F5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CAF7D4A5199D4C18006B06F5 /* AppDelegate.m */; };
+		CAF7D4A9199D4C18006B06F5 /* ARTEmailTest.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CAF7D4A7199D4C18006B06F5 /* ARTEmailTest.xcdatamodeld */; };
+		CAF7D4AC199D4C18006B06F5 /* ARTSlideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CAF7D4AB199D4C18006B06F5 /* ARTSlideViewController.m */; };
+		CAF7D4AF199D4C18006B06F5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CAF7D4AD199D4C18006B06F5 /* Main.storyboard */; };
+		CAF7D4B1199D4C18006B06F5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CAF7D4B0199D4C18006B06F5 /* Images.xcassets */; };
+		CAF7D4BD199D4C19006B06F5 /* ARTEmailTestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CAF7D4BC199D4C19006B06F5 /* ARTEmailTestTests.m */; };
+		CAF7D4C8199D4FD0006B06F5 /* ARTRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CAF7D4C7199D4FD0006B06F5 /* ARTRootViewController.m */; };
+		CAF7D4CB199D508A006B06F5 /* ARTCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CAF7D4CA199D508A006B06F5 /* ARTCenterViewController.m */; };
+		CAF7D4CE199D510C006B06F5 /* ARTBottomViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CAF7D4CD199D510C006B06F5 /* ARTBottomViewController.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		CAF7D4B7199D4C19006B06F5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CAF7D495199D4C18006B06F5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CAF7D49C199D4C18006B06F5;
+			remoteInfo = ARTEmailTest;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		CAF7D49D199D4C18006B06F5 /* ARTEmailTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ARTEmailTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CAF7D4A1199D4C18006B06F5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CAF7D4A2199D4C18006B06F5 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		CAF7D4A4199D4C18006B06F5 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		CAF7D4A5199D4C18006B06F5 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		CAF7D4A8199D4C18006B06F5 /* ARTEmailTest.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ARTEmailTest.xcdatamodel; sourceTree = "<group>"; };
+		CAF7D4AA199D4C18006B06F5 /* ARTSlideViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ARTSlideViewController.h; sourceTree = "<group>"; };
+		CAF7D4AB199D4C18006B06F5 /* ARTSlideViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ARTSlideViewController.m; sourceTree = "<group>"; };
+		CAF7D4AE199D4C18006B06F5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		CAF7D4B0199D4C18006B06F5 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		CAF7D4B6199D4C19006B06F5 /* ARTEmailTestTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ARTEmailTestTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		CAF7D4BB199D4C19006B06F5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CAF7D4BC199D4C19006B06F5 /* ARTEmailTestTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ARTEmailTestTests.m; sourceTree = "<group>"; };
+		CAF7D4C6199D4FD0006B06F5 /* ARTRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARTRootViewController.h; sourceTree = "<group>"; };
+		CAF7D4C7199D4FD0006B06F5 /* ARTRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARTRootViewController.m; sourceTree = "<group>"; };
+		CAF7D4C9199D508A006B06F5 /* ARTCenterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARTCenterViewController.h; sourceTree = "<group>"; };
+		CAF7D4CA199D508A006B06F5 /* ARTCenterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARTCenterViewController.m; sourceTree = "<group>"; };
+		CAF7D4CC199D510C006B06F5 /* ARTBottomViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARTBottomViewController.h; sourceTree = "<group>"; };
+		CAF7D4CD199D510C006B06F5 /* ARTBottomViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARTBottomViewController.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		CAF7D49A199D4C18006B06F5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CAF7D4B3199D4C19006B06F5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		CAF7D494199D4C18006B06F5 = {
+			isa = PBXGroup;
+			children = (
+				CAF7D49F199D4C18006B06F5 /* ARTEmailTest */,
+				CAF7D4B9199D4C19006B06F5 /* ARTEmailTestTests */,
+				CAF7D49E199D4C18006B06F5 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		CAF7D49E199D4C18006B06F5 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CAF7D49D199D4C18006B06F5 /* ARTEmailTest.app */,
+				CAF7D4B6199D4C19006B06F5 /* ARTEmailTestTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		CAF7D49F199D4C18006B06F5 /* ARTEmailTest */ = {
+			isa = PBXGroup;
+			children = (
+				CAF7D4A4199D4C18006B06F5 /* AppDelegate.h */,
+				CAF7D4A5199D4C18006B06F5 /* AppDelegate.m */,
+				CAF7D4CF199D59F3006B06F5 /* SlideView */,
+				CAF7D4C6199D4FD0006B06F5 /* ARTRootViewController.h */,
+				CAF7D4C7199D4FD0006B06F5 /* ARTRootViewController.m */,
+				CAF7D4C9199D508A006B06F5 /* ARTCenterViewController.h */,
+				CAF7D4CA199D508A006B06F5 /* ARTCenterViewController.m */,
+				CAF7D4CC199D510C006B06F5 /* ARTBottomViewController.h */,
+				CAF7D4CD199D510C006B06F5 /* ARTBottomViewController.m */,
+				CAF7D4AD199D4C18006B06F5 /* Main.storyboard */,
+				CAF7D4B0199D4C18006B06F5 /* Images.xcassets */,
+				CAF7D4A7199D4C18006B06F5 /* ARTEmailTest.xcdatamodeld */,
+				CAF7D4A0199D4C18006B06F5 /* Supporting Files */,
+			);
+			path = ARTEmailTest;
+			sourceTree = "<group>";
+		};
+		CAF7D4A0199D4C18006B06F5 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				CAF7D4A1199D4C18006B06F5 /* Info.plist */,
+				CAF7D4A2199D4C18006B06F5 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		CAF7D4B9199D4C19006B06F5 /* ARTEmailTestTests */ = {
+			isa = PBXGroup;
+			children = (
+				CAF7D4BC199D4C19006B06F5 /* ARTEmailTestTests.m */,
+				CAF7D4BA199D4C19006B06F5 /* Supporting Files */,
+			);
+			path = ARTEmailTestTests;
+			sourceTree = "<group>";
+		};
+		CAF7D4BA199D4C19006B06F5 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				CAF7D4BB199D4C19006B06F5 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		CAF7D4CF199D59F3006B06F5 /* SlideView */ = {
+			isa = PBXGroup;
+			children = (
+				CAF7D4AA199D4C18006B06F5 /* ARTSlideViewController.h */,
+				CAF7D4AB199D4C18006B06F5 /* ARTSlideViewController.m */,
+			);
+			name = SlideView;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		CAF7D49C199D4C18006B06F5 /* ARTEmailTest */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CAF7D4C0199D4C19006B06F5 /* Build configuration list for PBXNativeTarget "ARTEmailTest" */;
+			buildPhases = (
+				CAF7D499199D4C18006B06F5 /* Sources */,
+				CAF7D49A199D4C18006B06F5 /* Frameworks */,
+				CAF7D49B199D4C18006B06F5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ARTEmailTest;
+			productName = ARTEmailTest;
+			productReference = CAF7D49D199D4C18006B06F5 /* ARTEmailTest.app */;
+			productType = "com.apple.product-type.application";
+		};
+		CAF7D4B5199D4C19006B06F5 /* ARTEmailTestTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CAF7D4C3199D4C19006B06F5 /* Build configuration list for PBXNativeTarget "ARTEmailTestTests" */;
+			buildPhases = (
+				CAF7D4B2199D4C19006B06F5 /* Sources */,
+				CAF7D4B3199D4C19006B06F5 /* Frameworks */,
+				CAF7D4B4199D4C19006B06F5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CAF7D4B8199D4C19006B06F5 /* PBXTargetDependency */,
+			);
+			name = ARTEmailTestTests;
+			productName = ARTEmailTestTests;
+			productReference = CAF7D4B6199D4C19006B06F5 /* ARTEmailTestTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		CAF7D495199D4C18006B06F5 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0600;
+				ORGANIZATIONNAME = "Artie Entertainment";
+				TargetAttributes = {
+					CAF7D49C199D4C18006B06F5 = {
+						CreatedOnToolsVersion = 6.0;
+					};
+					CAF7D4B5199D4C19006B06F5 = {
+						CreatedOnToolsVersion = 6.0;
+						TestTargetID = CAF7D49C199D4C18006B06F5;
+					};
+				};
+			};
+			buildConfigurationList = CAF7D498199D4C18006B06F5 /* Build configuration list for PBXProject "ARTEmailTest" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = CAF7D494199D4C18006B06F5;
+			productRefGroup = CAF7D49E199D4C18006B06F5 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				CAF7D49C199D4C18006B06F5 /* ARTEmailTest */,
+				CAF7D4B5199D4C19006B06F5 /* ARTEmailTestTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		CAF7D49B199D4C18006B06F5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CAF7D4AF199D4C18006B06F5 /* Main.storyboard in Resources */,
+				CAF7D4B1199D4C18006B06F5 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CAF7D4B4199D4C19006B06F5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		CAF7D499199D4C18006B06F5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CAF7D4A6199D4C18006B06F5 /* AppDelegate.m in Sources */,
+				CAF7D4CB199D508A006B06F5 /* ARTCenterViewController.m in Sources */,
+				CAF7D4A9199D4C18006B06F5 /* ARTEmailTest.xcdatamodeld in Sources */,
+				CAF7D4AC199D4C18006B06F5 /* ARTSlideViewController.m in Sources */,
+				CAF7D4CE199D510C006B06F5 /* ARTBottomViewController.m in Sources */,
+				CAF7D4A3199D4C18006B06F5 /* main.m in Sources */,
+				CAF7D4C8199D4FD0006B06F5 /* ARTRootViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CAF7D4B2199D4C19006B06F5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CAF7D4BD199D4C19006B06F5 /* ARTEmailTestTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		CAF7D4B8199D4C19006B06F5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CAF7D49C199D4C18006B06F5 /* ARTEmailTest */;
+			targetProxy = CAF7D4B7199D4C19006B06F5 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		CAF7D4AD199D4C18006B06F5 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CAF7D4AE199D4C18006B06F5 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		CAF7D4BE199D4C19006B06F5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		CAF7D4BF199D4C19006B06F5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		CAF7D4C1199D4C19006B06F5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				INFOPLIST_FILE = ARTEmailTest/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		CAF7D4C2199D4C19006B06F5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				INFOPLIST_FILE = ARTEmailTest/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		CAF7D4C4199D4C19006B06F5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = ARTEmailTestTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ARTEmailTest.app/ARTEmailTest";
+			};
+			name = Debug;
+		};
+		CAF7D4C5199D4C19006B06F5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = ARTEmailTestTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ARTEmailTest.app/ARTEmailTest";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		CAF7D498199D4C18006B06F5 /* Build configuration list for PBXProject "ARTEmailTest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CAF7D4BE199D4C19006B06F5 /* Debug */,
+				CAF7D4BF199D4C19006B06F5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CAF7D4C0199D4C19006B06F5 /* Build configuration list for PBXNativeTarget "ARTEmailTest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CAF7D4C1199D4C19006B06F5 /* Debug */,
+				CAF7D4C2199D4C19006B06F5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		CAF7D4C3199D4C19006B06F5 /* Build configuration list for PBXNativeTarget "ARTEmailTestTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CAF7D4C4199D4C19006B06F5 /* Debug */,
+				CAF7D4C5199D4C19006B06F5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		CAF7D4A7199D4C18006B06F5 /* ARTEmailTest.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				CAF7D4A8199D4C18006B06F5 /* ARTEmailTest.xcdatamodel */,
+			);
+			currentVersion = CAF7D4A8199D4C18006B06F5 /* ARTEmailTest.xcdatamodel */;
+			path = ARTEmailTest.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = CAF7D495199D4C18006B06F5 /* Project object */;
+}
