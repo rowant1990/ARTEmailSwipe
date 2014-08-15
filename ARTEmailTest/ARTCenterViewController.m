@@ -7,6 +7,7 @@
 //
 
 #import "ARTCenterViewController.h"
+#import "UIViewController+ARTSlideView.h"
 #import "ARTSlideViewController.h"
 
 @interface ARTCenterViewController ()
@@ -29,7 +30,7 @@
 
 - (IBAction)emailClicked:(id)sender;
 {
-  [(ARTSlideViewController *)self.parentViewController showBottomPanel:YES bounce:NO];
+  [self.slideViewController showBottomPanel:YES bounce:NO];
 }
 
 @end

@@ -8,7 +8,12 @@
 
 #import "ARTBottomViewController.h"
 
+#import "ARTSlideViewController.h"
+#import "UIViewController+ARTSlideView.h"
+
 @interface ARTBottomViewController ()
+
+- (IBAction)betslipButton:(id)sender;
 
 @end
 
@@ -19,9 +24,10 @@
     // Do any additional setup after loading the view.
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (IBAction)betslipButton:(UIButton *)sender;
+{
+  sender.selected = !sender.selected;
+  [self.slideViewController openBottomPanel:sender.selected];
 }
 
 

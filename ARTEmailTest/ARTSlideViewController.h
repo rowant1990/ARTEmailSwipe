@@ -14,6 +14,7 @@
 @property (nonatomic, strong) UIViewController *bottomPanel;
 
 - (void)showBottomPanel:(BOOL)animated bounce:(BOOL)shouldBounce;
+- (void)openBottomPanel:(BOOL)animated;
 
 @end
 
