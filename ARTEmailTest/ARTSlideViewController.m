@@ -157,6 +157,8 @@ static CGFloat const ARTBottomOffset = 55.f;
     frame.origin.y = open ? ARTTopOffset : frame.size.height - ARTBottomOffset;
     frame.size.height = open ? frame.size.height - ARTTopOffset : ARTBottomOffset;
     self.bottomPanel.view.frame = frame;
+    self.bottomPanelContainer.center =  CGPointMake(self.bottomPanelContainer.center.x, self.view.bounds.size.height / 2);
+    NSLog(@"center = %f", self.bottomPanelContainer.center.y);
     self.centerPanel.view.transform = open ? CGAffineTransformMakeScale(0.9, 0.9) : CGAffineTransformMakeScale(1, 1);
   } completion:^(BOOL finished) {
     if (!open) {
@@ -178,51 +180,29 @@ static CGFloat const ARTBottomOffset = 55.f;
 - (void)_handlePan:(UIGestureRecognizer *)sender;
 {
   if ([sender isKindOfClass:[UIPanGestureRecognizer class]]) {
+    
     UIPanGestureRecognizer *pan = (UIPanGestureRecognizer *)sender;
+    CGPoint translate = [pan translationInView:self.bottomPanelContainer];
+    self.bottomPanelContainer.center = CGPointMake(self.bottomPanelContainer.center.x, self.bottomPanelContainer.center.y + translate.y);
+    [pan setTranslation:CGPointZero inView:self.bottomPanelContainer];
     
+    CGFloat origin = self.bottomPanelContainer.frame.origin.y;
     
-    CGPoint translate = [pan translationInView:self.centerPanelContainer];
-    NSLog(@"%@", NSStringFromCGPoint(translate));
+    if (origin < 200) {
+      CGFloat scale = (origin / 200) + 0.9;
+      self.centerPanel.view.transform = CGAffineTransformMakeScale(scale, scale);
+    }
     
-    CGRect frame = self.bottomPanel.view.frame;
-    frame.origin.y = translate.y;
-    self.bottomPanel.view.frame = frame;
-
-    
-//    CGRect frame = _centerPanelRestingFrame;
-//    frame.origin.x += roundf([self _correctMovement:translate.x]);
-//    
-//    if (self.style == JASidePanelMultipleActive) {
-//      frame.size.width = self.view.bounds.size.width - frame.origin.x;
-//    }
-//    
-//    self.centerPanelContainer.frame = frame;
-//    
-//    // if center panel has focus, make sure correct side panel is revealed
-//    if (self.state == JASidePanelCenterVisible) {
-//      if (frame.origin.x > 0.0f) {
-//        [self _loadLeftPanel];
-//      } else if(frame.origin.x < 0.0f) {
-//        [self _loadRightPanel];
-//      }
-//    }
-//    
-//    // adjust side panel locations, if needed
-//    if (self.style == JASidePanelMultipleActive || self.pushesSidePanels) {
-//      [self _layoutSideContainers:NO duration:0];
-//    }
-//    
-//    if (sender.state == UIGestureRecognizerStateEnded) {
-//      CGFloat deltaX =  frame.origin.x - _locationBeforePan.x;
-//      if ([self _validateThreshold:deltaX]) {
-//        [self _completePan:deltaX];
-//      } else {
-//        [self _undoPan];
-//      }
-//    } else if (sender.state == UIGestureRecognizerStateCancelled) {
-//      [self _undoPan];
-//    }
-//  }
+    if (sender.state == UIGestureRecognizerStateEnded) {
+      
+      NSLog(@"origin = %f", self.bottomPanelContainer.frame.origin.y);
+      NSLog(@"Center = %f", self.bottomPanelContainer.center.y);
+      if (origin > 200) {
+        [self openBottomPanel:NO];
+      } else {
+        [self openBottomPanel:YES];
+      }
+    }
   }
 }
 
