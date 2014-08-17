@@ -28,9 +28,9 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)emailClicked:(id)sender;
+- (IBAction)emailClicked:(UIButton *)sender;
 {
-  [self.slideViewController showBottomPanel:YES bounce:NO];
+  [self.slideViewController openBottomPanel];
 }
 
 @end

@@ -1,16 +1,33 @@
-//
-//  ViewController.m
-//  ARTEmailTest
-//
-//  Created by Rowan Townshend on 8/14/14.
-//  Copyright (c) 2014 Artie Entertainment. All rights reserved.
-//
+
+/*  Created by Rowan Townshend on 8/14/14.
+ Copyright (c) 2014 Rowan Townshend. All rights reserved.
+ 
+ Permission is hereby granted, free of charge, to any person obtaining a copy of
+ this software and associated documentation files (the "Software"), to deal in
+ the Software without restriction, including without limitation the rights to
+ use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies
+ of the Software, and to permit persons to whom the Software is furnished to do
+ so, subject to the following conditions:
+ 
+ The above copyright notice and this permission notice shall be included in all
+ copies or substantial portions of the Software.
+ 
+ If you happen to meet one of the copyright holders in a bar you are obligated
+ to buy them one pint of beer.
+ 
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ SOFTWAR
+ */
 
 #import "ARTSlideViewController.h"
 
-
-static CGFloat const ARTTopOffset = 40.f;
-static CGFloat const ARTBottomOffset = 55.f;
+static CGFloat const ARTDefaultBottomPanelDistanceFromTop = 40.f;
+static CGFloat const ARTDefaultBottomPanelClosedHeight = 55.f;
 
 @interface ARTSlideViewController ()
 
@@ -18,26 +35,41 @@ static CGFloat const ARTBottomOffset = 55.f;
 @property (nonatomic, strong) UIView *bottomPanelContainer;
 @property (nonatomic, strong) UIPanGestureRecognizer *panGestureRecoginser;
 
-@property (nonatomic, assign) CGRect restingFrame;
+@property (nonatomic, assign) ARTOpenType status;
+@property (nonatomic, assign) CGFloat dragOffset;
+@property (nonatomic, assign) CGFloat transformOffset;
 
 @end
 
 @implementation ARTSlideViewController
 
-- (id)initWithCoder:(NSCoder *)aDecoder {
-  if (self = [super initWithCoder:aDecoder]) {
+- (id)initWithCoder:(NSCoder *)aDecoder;
+{
+  self = [super initWithCoder:aDecoder];
+  if (self) {
+    self.status = ARTOpenTypeClosed;
+    self.bottomPanelClosedHeight = ARTDefaultBottomPanelClosedHeight;
+    self.bottomPanelDistanceFromTop = ARTDefaultBottomPanelDistanceFromTop;
   }
   return self;
 }
 
-- (id)init {
-  if (self = [super init]) {
+- (id)init;
+{
+  self = [super init];
+  if (self) {
+    self.status = ARTOpenTypeClosed;
+    self.bottomPanelClosedHeight = ARTDefaultBottomPanelClosedHeight;
+    self.bottomPanelDistanceFromTop = ARTDefaultBottomPanelDistanceFromTop;
   }
   return self;
 }
 
 - (void)viewDidLoad;
 {
+  self.dragOffset = self.view.bounds.size.height - (self.view.bounds.size.height / 4);
+  self.transformOffset = self.view.bounds.size.height - (self.view.bounds.size.height / 2);
+  
   self.centerPanelContainer = [[UIView alloc] initWithFrame:self.view.bounds];
   self.centerPanelContainer.frame =  self.view.bounds;
   
@@ -46,14 +78,11 @@ static CGFloat const ARTBottomOffset = 55.f;
   
   [self.view addSubview:self.bottomPanelContainer];
   [self.view addSubview:self.centerPanelContainer];
-  
-  [self _swapCenter:nil with:_centerPanel];
+  [self swapCenter:nil with:_centerPanel];
 }
 
 - (void)setCenterPanel:(UIViewController *)centerPanel;
 {
-  UIViewController *previous = _centerPanel;
-  
   if (centerPanel != _centerPanel) {
     [_centerPanel willMoveToParentViewController:nil];
     [_centerPanel.view removeFromSuperview];
@@ -62,6 +91,21 @@ static CGFloat const ARTBottomOffset = 55.f;
     if (_centerPanel) {
       [self addChildViewController:_centerPanel];
       [_centerPanel didMoveToParentViewController:self];
+    }
+  }
+}
+
+- (void)swapCenter:(UIViewController *)previous with:(UIViewController *)next {
+  if (previous != next) {
+    [previous willMoveToParentViewController:nil];
+    [previous.view removeFromSuperview];
+    [previous removeFromParentViewController];
+    
+    if (next) {
+      _centerPanel.view.frame = self.centerPanelContainer.bounds;
+      [self addChildViewController:next];
+      [self.centerPanelContainer addSubview:next.view];
+      [next didMoveToParentViewController:self];
     }
   }
 }
@@ -80,71 +124,81 @@ static CGFloat const ARTBottomOffset = 55.f;
   }
 }
 
-- (void)loadBottomPanel {
+- (void)openBottomPanel;
+{
+  [self openBottomPanel:ARTOpenTypeFully];
+}
+
+- (void)openBottomPanel:(ARTOpenType)openType;
+{
+  [self animateCenterPanel];
+  self.status = openType == ARTOpenTypePartly ? ARTOpenTypePartly : ARTOpenTypeFully;
+  
+  [self loadBottomPanel:openType];
+}
+
+- (void)closeBottomPanel;
+{
+  [self animateCenterPanel];
+}
+
+- (void)loadBottomPanel:(ARTOpenType)openType;
+{
   if (self.bottomPanel) {
     
     if (!_bottomPanel.view.superview) {
       
       CGRect frame = self.bottomPanelContainer.bounds;
-      frame.origin.y = self.view.bounds.size.height - 55;
-      frame.size.height = 55;
+      frame.origin.y = self.view.bounds.size.height - ARTDefaultBottomPanelClosedHeight;
+      frame.size.height = ARTDefaultBottomPanelClosedHeight;
       self.bottomPanel.view.frame = frame;
+      
+      UIButton *tap = [UIButton buttonWithType:UIButtonTypeCustom];
+      tap.frame = CGRectMake(0, 0, self.view.frame.size.width, ARTDefaultBottomPanelClosedHeight);
+      [tap addTarget:self action:@selector(bottomPanelOpen:) forControlEvents:UIControlEventTouchUpInside];
+      tap.backgroundColor = [UIColor redColor];
+      [_bottomPanel.view addSubview:tap];
+      [_bottomPanel.view sendSubviewToBack:tap];
       
       _bottomPanel.view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
       [self.bottomPanelContainer addSubview:_bottomPanel.view];
     }
-  }
-}
-
-- (void)_swapCenter:(UIViewController *)previous with:(UIViewController *)next {
-  if (previous != next) {
-    [previous willMoveToParentViewController:nil];
-    [previous.view removeFromSuperview];
-    [previous removeFromParentViewController];
     
-    if (next) {
-      _centerPanel.view.frame = self.centerPanelContainer.bounds;
-      [self addChildViewController:next];
-      [self.centerPanelContainer addSubview:next.view];
-      [next didMoveToParentViewController:self];
-    }
+    self.status = ARTOpenTypePartly;
+    [self bottomPanelOpen:openType];
   }
 }
-
-#pragma mark - Panel Sizing
-
-- (CGRect)_adjustCenterFrame;
-{
-  CGRect frame = self.view.bounds;
-  frame.size.height = self.view.bounds.size.height - ARTBottomOffset;
-  _restingFrame = frame;
-  return _restingFrame;
-}
-
 
 #pragma mark Animation
 
-- (void)_animateCenterPanel:(BOOL)shouldBounce completion:(void (^)(BOOL finished))completion;
+- (void)animateCenterPanel;
 {
+  BOOL open = self.status == ARTOpenTypeClosed;
+  if (self.status == ARTOpenTypeFully) {
+    [self bottomPanelOpen:ARTOpenTypePartly];
+  }
+  
   [UIView animateWithDuration:0.5f delay:0.0f options:UIViewAnimationOptionCurveLinear|UIViewAnimationOptionLayoutSubviews animations:^{
-    self.centerPanelContainer.frame = self.restingFrame;
+    CGRect frame = self.view.bounds;
+    frame.size.height = open ? self.view.bounds.size.height - ARTDefaultBottomPanelClosedHeight : self.view.bounds.size.height;
+    self.centerPanelContainer.frame = frame;
   } completion:^(BOOL finished) {
-    
+    if (!open) {
+      self.status = ARTOpenTypeClosed;
+    }
   }];
 }
 
-
-#pragma mark - Showing Panels
-
-- (void)showBottomPanel:(BOOL)animated bounce:(BOOL)shouldBounce {
-  
-  [self loadBottomPanel];
-  [self _adjustCenterFrame];
-  [self _animateCenterPanel:shouldBounce completion:nil];
-}
-
-- (void)openBottomPanel:(BOOL)open;
+- (void)bottomPanelOpen:(ARTOpenType)openType;
 {
+  if (self.status == ARTOpenTypeFully) {
+    openType = ARTOpenTypePartly;
+  } else {
+    openType = ARTOpenTypeFully;
+  }
+  //openType = !openType || openType > ARTOpenTypeClosed ? ARTOpenTypeFully : openType;
+  BOOL open = self.status == ARTOpenTypePartly && openType == ARTOpenTypeFully;
+  
   if (open) {
     [self.view bringSubviewToFront:self.bottomPanelContainer];
     [self addPanGestureToView:self.bottomPanel.view];
@@ -152,15 +206,17 @@ static CGFloat const ARTBottomOffset = 55.f;
     [self.bottomPanel.view removeGestureRecognizer:self.panGestureRecoginser];
   }
   
+  [self.delegate bottomPanelOpened:openType];
+  
   [UIView animateWithDuration:0.5f delay:0.0f options:UIViewAnimationOptionCurveLinear|UIViewAnimationOptionLayoutSubviews animations:^{
     CGRect frame = self.view.bounds;
-    frame.origin.y = open ? ARTTopOffset : frame.size.height - ARTBottomOffset;
-    frame.size.height = open ? frame.size.height - ARTTopOffset : ARTBottomOffset;
+    frame.origin.y = open ? self.bottomPanelDistanceFromTop : self.view.frame.size.height - self.bottomPanelClosedHeight;;
+    frame.size.height = open ? frame.size.height - self.bottomPanelDistanceFromTop : self.bottomPanelClosedHeight;
     self.bottomPanel.view.frame = frame;
     self.bottomPanelContainer.center =  CGPointMake(self.bottomPanelContainer.center.x, self.view.bounds.size.height / 2);
-    NSLog(@"center = %f", self.bottomPanelContainer.center.y);
     self.centerPanel.view.transform = open ? CGAffineTransformMakeScale(0.9, 0.9) : CGAffineTransformMakeScale(1, 1);
   } completion:^(BOOL finished) {
+    self.status = open ? ARTOpenTypeFully : ARTOpenTypePartly;
     if (!open) {
       [self.view bringSubviewToFront:self.centerPanelContainer];
     }
@@ -169,15 +225,15 @@ static CGFloat const ARTBottomOffset = 55.f;
 
 #pragma mark Gestures
 
-- (void)addPanGestureToView:(UIView *)view {
-  self.panGestureRecoginser = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(_handlePan:)];
-  self.panGestureRecoginser.delegate = self;
+- (void)addPanGestureToView:(UIView *)view;
+{
+  self.panGestureRecoginser = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePan:)];
   self.panGestureRecoginser.maximumNumberOfTouches = 1;
   self.panGestureRecoginser.minimumNumberOfTouches = 1;
   [view addGestureRecognizer:self.panGestureRecoginser];
 }
 
-- (void)_handlePan:(UIGestureRecognizer *)sender;
+- (void)handlePan:(UIGestureRecognizer *)sender;
 {
   if ([sender isKindOfClass:[UIPanGestureRecognizer class]]) {
     
@@ -188,8 +244,9 @@ static CGFloat const ARTBottomOffset = 55.f;
     
     CGFloat origin = self.bottomPanelContainer.frame.origin.y;
     
-    if (origin < 200) {
-      CGFloat scale = (origin / 200) + 0.9;
+    if (origin < self.transformOffset) {
+      CGFloat scale = ((origin / self.transformOffset) / 10) + 0.9;
+      
       self.centerPanel.view.transform = CGAffineTransformMakeScale(scale, scale);
     }
     
@@ -197,10 +254,12 @@ static CGFloat const ARTBottomOffset = 55.f;
       
       NSLog(@"origin = %f", self.bottomPanelContainer.frame.origin.y);
       NSLog(@"Center = %f", self.bottomPanelContainer.center.y);
-      if (origin > 200) {
-        [self openBottomPanel:NO];
+      if (origin > self.dragOffset) {
+        self.status = ARTOpenTypeFully;
+        [self bottomPanelOpen:ARTOpenTypePartly];
       } else {
-        [self openBottomPanel:YES];
+        self.status = ARTOpenTypePartly;
+        [self bottomPanelOpen:ARTOpenTypeFully];
       }
     }
   }

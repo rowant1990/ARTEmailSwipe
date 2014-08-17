@@ -5,23 +5,23 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>C064E6E4-89DB-4569-8D48-7BD5808F5385</string>
+	<string>B545AB28-1E31-4CFE-8113-F07A7182F911</string>
 	<key>IDESourceControlProjectName</key>
 	<string>ARTEmailTest</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>BE55AF9CE1A87DCDCDC42B2F88F868946947ECD2</key>
-		<string>ssh://bitbucket.org/rowant1990/artiosemailswipecontainer.git</string>
+		<string>bitbucket.org:rowant1990/artiosemailswipecontainer.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>ARTEmailTest.xcodeproj/project.xcworkspace</string>
+	<string>ARTEmailTest.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>BE55AF9CE1A87DCDCDC42B2F88F868946947ECD2</key>
 		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>ssh://bitbucket.org/rowant1990/artiosemailswipecontainer.git</string>
+	<string>bitbucket.org:rowant1990/artiosemailswipecontainer.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
@@ -34,7 +34,7 @@
 			<key>IDESourceControlWCCIdentifierKey</key>
 			<string>BE55AF9CE1A87DCDCDC42B2F88F868946947ECD2</string>
 			<key>IDESourceControlWCCName</key>
-			<string>artiosemailswipecontainer</string>
+			<string>ARTEmailTest</string>
 		</dict>
 	</array>
 </dict>

@@ -11,24 +11,35 @@
 #import "ARTSlideViewController.h"
 #import "UIViewController+ARTSlideView.h"
 
-@interface ARTBottomViewController ()
+@interface ARTBottomViewController () <ARTSlideViewDelegate>
 
-- (IBAction)betslipButton:(id)sender;
+@property (nonatomic, weak) IBOutlet UIButton *cancelButton;
+
+- (IBAction)cancelPrssed:(id)sender;
 
 @end
 
 @implementation ARTBottomViewController
 
 - (void)viewDidLoad {
-    [super viewDidLoad];
-    // Do any additional setup after loading the view.
+  [super viewDidLoad];
+  self.slideViewController.delegate = self;
 }
 
-- (IBAction)betslipButton:(UIButton *)sender;
+- (IBAction)cancelPrssed:(id)sender;
 {
-  sender.selected = !sender.selected;
-  [self.slideViewController openBottomPanel:sender.selected];
+  [self.slideViewController closeBottomPanel];
 }
 
+#pragma mark ARTSlideViewDelegate
+
+- (void)bottomPanelOpened:(ARTOpenType)type;
+{
+  [UIView animateWithDuration:0.5f animations:^{
+    self.cancelButton.alpha = type == ARTOpenTypeFully;
+  } completion:^(BOOL finished) {
+    
+  }];
+}
 
 @end
