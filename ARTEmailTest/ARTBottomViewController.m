@@ -8,8 +8,8 @@
 
 #import "ARTBottomViewController.h"
 
-#import "ARTSlideViewController.h"
-#import "UIViewController+ARTSlideView.h"
+#import "ARTEmailSwipe.h"
+#import "UIViewController+ARTEmailSwipe.h"
 
 @interface ARTBottomViewController () <ARTSlideViewDelegate>
 
@@ -21,9 +21,10 @@
 
 @implementation ARTBottomViewController
 
-- (void)viewDidLoad {
+- (void)viewDidLoad;
+{
   [super viewDidLoad];
-  self.slideViewController.delegate = self;
+  self.slideViewController.bottomDelegate = self;
 }
 
 - (IBAction)cancelPrssed:(id)sender;
@@ -40,6 +41,11 @@
   } completion:^(BOOL finished) {
     
   }];
+}
+
+- (void)panGestureOffset:(CGPoint)offset state:(UIGestureRecognizerState)state;
+{
+  CGFloat origin = offset.y;
 }
 
 @end

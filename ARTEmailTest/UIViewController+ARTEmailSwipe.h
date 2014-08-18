@@ -23,24 +23,12 @@
  */
 
 
-#import "UIViewController+ARTSlideView.h"
-#import "ARTSlideViewController.h"
+#import <UIKit/UIKit.h>
 
-@implementation UIViewController (ARTSlideView)
+@class ARTEmailSwipe;
 
-- (ARTSlideViewController *)slideViewController;
-{
-  UIViewController *iter = self.parentViewController;
-  while (iter) {
-    if ([iter isKindOfClass:[ARTSlideViewController class]]) {
-      return (ARTSlideViewController *)iter;
-    } else if (iter.parentViewController && iter.parentViewController != iter) {
-      iter = iter.parentViewController;
-    } else {
-      iter = nil;
-    }
-  }
-  return nil;
-}
+@interface UIViewController (ARTEmailSwipe)
+
+@property (nonatomic, weak, readonly) ARTEmailSwipe *slideViewController;
 
 @end

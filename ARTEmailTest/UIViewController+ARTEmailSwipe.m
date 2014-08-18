@@ -1,5 +1,6 @@
-//  Copyright (c) 2014 Rowan Townshend. All rights reserved.
-/*
+
+/*  Copyright (c) 2014 Rowan Townshend. All rights reserved.
+
  Permission is hereby granted, free of charge, to any person obtaining a copy of
  this software and associated documentation files (the "Software"), to deal in
  the Software without restriction, including without limitation the rights to
@@ -23,13 +24,24 @@
  */
 
 
-#import <UIKit/UIKit.h>
+#import "UIViewController+ARTEmailSwipe.h"
+#import "ARTEmailSwipe.h"
 
-@class ARTSlideViewController;
+@implementation UIViewController (ARTEmailSwipe)
 
-@interface UIViewController (ARTSlideView)
-
-// all
-@property (nonatomic, weak, readonly) ARTSlideViewController *slideViewController;
+- (ARTEmailSwipe *)slideViewController;
+{
+  UIViewController *iter = self.parentViewController;
+  while (iter) {
+    if ([iter isKindOfClass:[ARTEmailSwipe class]]) {
+      return (ARTEmailSwipe *)iter;
+    } else if (iter.parentViewController && iter.parentViewController != iter) {
+      iter = iter.parentViewController;
+    } else {
+      iter = nil;
+    }
+  }
+  return nil;
+}
 
 @end

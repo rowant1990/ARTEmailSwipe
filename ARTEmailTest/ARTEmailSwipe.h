@@ -35,22 +35,32 @@ typedef NS_ENUM(NSInteger, ARTOpenType) {
 @protocol ARTSlideViewDelegate <NSObject>
 
 - (void)bottomPanelOpened:(ARTOpenType)type;
+- (void)panGestureOffset:(CGPoint)offset state:(UIGestureRecognizerState)state;
 
 @end
 
-@interface ARTSlideViewController : UIViewController
+@interface ARTEmailSwipe : UIViewController
 
 @property (nonatomic, strong) UIViewController *centerPanel;
 @property (nonatomic, strong) UIViewController *bottomPanel;
 
 // Optional - assign a delegate if you need to notify either panels when the bottom panel is open or closed.
-@property (nonatomic, weak) id<ARTSlideViewDelegate>delegate;
+@property (nonatomic, weak) id<ARTSlideViewDelegate>bottomDelegate;
 
 // Optional - is the height of the bottom panel when closed.
 @property (nonatomic, assign) CGFloat bottomPanelClosedHeight;
 
-// OPtional - is the distance from the bottom panel, when its open, to the top.
+// Optional - is the distance from the bottom panel, when its open, to the top.
 @property (nonatomic, assign) CGFloat bottomPanelDistanceFromTop;
+
+// Optional - the distance the bottom view bounces when it partially closes.
+@property (nonatomic, assign) CGFloat bounceOffset;
+
+// Optional - the duration of the bounce animation.
+@property (nonatomic, assign) CGFloat bounceAnimationDuration;
+
+// Optional - the gap between the center panel and the bottom panel when its partailly closed.
+@property (nonatomic, assign) CGFloat bottomCenterPanelOffset;
 
 // show bottom panel if you only want the panel to open partially on luanch the pass through the enum type ARTOpenTypePartly.
 - (void)openBottomPanel;

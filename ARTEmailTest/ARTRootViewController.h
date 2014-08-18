@@ -7,8 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "ARTSlideViewController.h"
+#import "ARTEmailSwipe.h"
 
-@interface ARTRootViewController : ARTSlideViewController
+@interface ARTRootViewController : ARTEmailSwipe
 
 @end

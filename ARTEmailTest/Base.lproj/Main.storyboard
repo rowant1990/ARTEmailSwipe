@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6205" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6205" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6198"/>
         <capability name="Constraints with attributes relative to the layout margin" minToolsVersion="6.0"/>
@@ -10,8 +10,8 @@
             <objects>
                 <viewController id="vXZ-lx-hvc" customClass="ARTRootViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
-                        <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
+                        <viewControllerLayoutGuide type="top" id="nnR-vK-dxc"/>
+                        <viewControllerLayoutGuide type="bottom" id="hem-3t-cgP"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -26,7 +26,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-142" y="339"/>
+            <point key="canvasLocation" x="-291" y="344"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="xTH-vR-Tk4">
@@ -54,8 +54,8 @@
             <objects>
                 <viewController useStoryboardIdentifierAsRestorationIdentifier="YES" id="YNk-DH-k02" customClass="ARTCenterViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="fwf-US-jDK"/>
-                        <viewControllerLayoutGuide type="bottom" id="uR4-Jo-kp1"/>
+                        <viewControllerLayoutGuide type="top" id="Gug-2f-p5T"/>
+                        <viewControllerLayoutGuide type="bottom" id="bRY-sr-tOK"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="9ZW-A2-eR8">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -68,11 +68,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VlB-jb-828">
-                                <rect key="frame" x="76" y="373" width="169" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="5Fc-Nq-YZk"/>
-                                    <constraint firstAttribute="width" constant="169" id="U7m-NP-8W8"/>
-                                </constraints>
+                                <rect key="frame" x="0.0" y="373" width="320" height="30"/>
                                 <state key="normal" title="Email">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -92,9 +88,9 @@
                         </subviews>
                         <color key="backgroundColor" red="0.016596859410000001" green="0.7326091683" blue="0.76586415819999998" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="VlB-jb-828" firstAttribute="leading" secondItem="9ZW-A2-eR8" secondAttribute="leadingMargin" constant="60" id="3Sm-Ob-fB8"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="VlB-jb-828" secondAttribute="trailing" constant="59" id="U8Q-7d-Kma"/>
-                            <constraint firstItem="uR4-Jo-kp1" firstAttribute="top" secondItem="VlB-jb-828" secondAttribute="bottom" constant="165" id="zxR-vj-zQh"/>
+                            <constraint firstItem="VlB-jb-828" firstAttribute="leading" secondItem="9ZW-A2-eR8" secondAttribute="leadingMargin" constant="-16" id="Hjt-QP-aPB"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="VlB-jb-828" secondAttribute="trailing" constant="-16" id="TYE-mC-LY0"/>
+                            <constraint firstItem="bRY-sr-tOK" firstAttribute="top" secondItem="VlB-jb-828" secondAttribute="bottom" constant="165" id="mzf-Ze-lBH"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="All Inboxes" id="f4G-Pv-Tmr"/>
@@ -113,8 +109,8 @@
             <objects>
                 <viewController id="taG-4W-pqo" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="PgY-H9-jSQ"/>
-                        <viewControllerLayoutGuide type="bottom" id="1BC-q6-IDF"/>
+                        <viewControllerLayoutGuide type="top" id="Wva-Jd-Ref"/>
+                        <viewControllerLayoutGuide type="bottom" id="vUb-Kd-qAS"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="aWb-Ia-sdU">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -140,8 +136,8 @@
             <objects>
                 <viewController storyboardIdentifier="ARTBottomViewControllerIdentifier" id="gid-yI-6fh" customClass="ARTBottomViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="a64-Dc-naM"/>
-                        <viewControllerLayoutGuide type="bottom" id="grG-ib-EcE"/>
+                        <viewControllerLayoutGuide type="top" id="qBk-Bo-bhQ"/>
+                        <viewControllerLayoutGuide type="bottom" id="oI1-mV-kjI"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="IEy-Ew-7hB">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -172,6 +168,9 @@
                         <size key="portraitSize" width="320" height="568"/>
                         <size key="landscapeSize" width="568" height="320"/>
                     </simulatedScreenMetrics>
+                    <connections>
+                        <outlet property="cancelButton" destination="Vc1-Mo-k3c" id="JiW-VT-AjW"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZeV-VJ-zLv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

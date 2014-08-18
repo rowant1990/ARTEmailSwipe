@@ -7,8 +7,8 @@
 //
 
 #import "ARTCenterViewController.h"
-#import "UIViewController+ARTSlideView.h"
-#import "ARTSlideViewController.h"
+#import "UIViewController+ARTEmailSwipe.h"
+#import "ARTEmailSwipe.h"
 
 @interface ARTCenterViewController ()
 

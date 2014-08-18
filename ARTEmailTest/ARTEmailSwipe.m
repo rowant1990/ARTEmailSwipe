@@ -24,12 +24,15 @@
  SOFTWAR
  */
 
-#import "ARTSlideViewController.h"
+#import "ARTEmailSwipe.h"
 
 static CGFloat const ARTDefaultBottomPanelDistanceFromTop = 40.f;
 static CGFloat const ARTDefaultBottomPanelClosedHeight = 55.f;
+static CGFloat const ARTDefaultBounceOffset = 5.f;
+static CGFloat const ARTDefaultBounceDuration = 0.2f;
+static CGFloat const ARTDefaultBottomCenterPanelOffset = 5.f;
 
-@interface ARTSlideViewController ()
+@interface ARTEmailSwipe ()
 
 @property (nonatomic, strong) UIView *centerPanelContainer;
 @property (nonatomic, strong) UIView *bottomPanelContainer;
@@ -41,15 +44,13 @@ static CGFloat const ARTDefaultBottomPanelClosedHeight = 55.f;
 
 @end
 
-@implementation ARTSlideViewController
+@implementation ARTEmailSwipe
 
 - (id)initWithCoder:(NSCoder *)aDecoder;
 {
   self = [super initWithCoder:aDecoder];
   if (self) {
-    self.status = ARTOpenTypeClosed;
-    self.bottomPanelClosedHeight = ARTDefaultBottomPanelClosedHeight;
-    self.bottomPanelDistanceFromTop = ARTDefaultBottomPanelDistanceFromTop;
+    [self configure];
   }
   return self;
 }
@@ -58,17 +59,25 @@ static CGFloat const ARTDefaultBottomPanelClosedHeight = 55.f;
 {
   self = [super init];
   if (self) {
-    self.status = ARTOpenTypeClosed;
-    self.bottomPanelClosedHeight = ARTDefaultBottomPanelClosedHeight;
-    self.bottomPanelDistanceFromTop = ARTDefaultBottomPanelDistanceFromTop;
+    [self configure];
   }
   return self;
 }
 
+- (void)configure;
+{
+  self.status = ARTOpenTypeClosed;
+  self.bottomPanelClosedHeight = ARTDefaultBottomPanelClosedHeight;
+  self.bottomPanelDistanceFromTop = ARTDefaultBottomPanelDistanceFromTop;
+  self.bounceOffset = ARTDefaultBounceOffset;
+  self.bounceAnimationDuration = ARTDefaultBounceDuration;
+  self.bottomCenterPanelOffset = ARTDefaultBottomCenterPanelOffset;
+}
+
 - (void)viewDidLoad;
 {
-  self.dragOffset = self.view.bounds.size.height - (self.view.bounds.size.height / 4);
-  self.transformOffset = self.view.bounds.size.height - (self.view.bounds.size.height / 2);
+  self.dragOffset =  self.view.bounds.size.height - (self.view.bounds.size.height / 4);
+  self.transformOffset =  self.view.bounds.size.height - (self.view.bounds.size.height / 2);
   
   self.centerPanelContainer = [[UIView alloc] initWithFrame:self.view.bounds];
   self.centerPanelContainer.frame =  self.view.bounds;
@@ -78,36 +87,31 @@ static CGFloat const ARTDefaultBottomPanelClosedHeight = 55.f;
   
   [self.view addSubview:self.bottomPanelContainer];
   [self.view addSubview:self.centerPanelContainer];
-  [self swapCenter:nil with:_centerPanel];
+  
+  [self addCenterPanel];
 }
 
-- (void)setCenterPanel:(UIViewController *)centerPanel;
+//- (void)setCenterPanel:(UIViewController *)centerPanel;
+//{
+//  if (centerPanel != _centerPanel) {
+//    [_centerPanel willMoveToParentViewController:nil];
+//    [_centerPanel.view removeFromSuperview];
+//    [_centerPanel removeFromParentViewController];
+//    _centerPanel = centerPanel;
+//    if (_centerPanel) {
+//      //[self addChildViewController:_centerPanel];
+//      //[_centerPanel didMoveToParentViewController:self];
+//    }
+//  }
+//}
+
+- (void)addCenterPanel;
 {
-  if (centerPanel != _centerPanel) {
-    [_centerPanel willMoveToParentViewController:nil];
-    [_centerPanel.view removeFromSuperview];
-    [_centerPanel removeFromParentViewController];
-    _centerPanel = centerPanel;
-    if (_centerPanel) {
-      [self addChildViewController:_centerPanel];
-      [_centerPanel didMoveToParentViewController:self];
-    }
-  }
-}
-
-- (void)swapCenter:(UIViewController *)previous with:(UIViewController *)next {
-  if (previous != next) {
-    [previous willMoveToParentViewController:nil];
-    [previous.view removeFromSuperview];
-    [previous removeFromParentViewController];
-    
-    if (next) {
-      _centerPanel.view.frame = self.centerPanelContainer.bounds;
-      [self addChildViewController:next];
-      [self.centerPanelContainer addSubview:next.view];
-      [next didMoveToParentViewController:self];
-    }
-  }
+  _centerPanel.view.frame = self.centerPanelContainer.bounds;
+  [self addChildViewController:_centerPanel];
+  [self.centerPanelContainer addSubview:_centerPanel.view];
+  [_centerPanel didMoveToParentViewController:self];
+  
 }
 
 - (void)setBottomPanel:(UIViewController *)bottomPanel;
@@ -131,15 +135,15 @@ static CGFloat const ARTDefaultBottomPanelClosedHeight = 55.f;
 
 - (void)openBottomPanel:(ARTOpenType)openType;
 {
-  [self animateCenterPanel];
-  self.status = openType == ARTOpenTypePartly ? ARTOpenTypePartly : ARTOpenTypeFully;
+  [self animateCenterPanel:NO];
+  self.status = openType;
   
   [self loadBottomPanel:openType];
 }
 
 - (void)closeBottomPanel;
 {
-  [self animateCenterPanel];
+  [self animateCenterPanel:YES];
 }
 
 - (void)loadBottomPanel:(ARTOpenType)openType;
@@ -149,19 +153,25 @@ static CGFloat const ARTDefaultBottomPanelClosedHeight = 55.f;
     if (!_bottomPanel.view.superview) {
       
       CGRect frame = self.bottomPanelContainer.bounds;
-      frame.origin.y = self.view.bounds.size.height - ARTDefaultBottomPanelClosedHeight;
-      frame.size.height = ARTDefaultBottomPanelClosedHeight;
+      frame.origin.y = self.view.bounds.size.height - self.bottomPanelClosedHeight;
+      frame.size.height = self.bottomPanelClosedHeight;
       self.bottomPanel.view.frame = frame;
       
       UIButton *tap = [UIButton buttonWithType:UIButtonTypeCustom];
-      tap.frame = CGRectMake(0, 0, self.view.frame.size.width, ARTDefaultBottomPanelClosedHeight);
+      tap.frame = CGRectMake(0, 0, self.view.frame.size.width, self.bottomPanelClosedHeight);
       [tap addTarget:self action:@selector(bottomPanelOpen:) forControlEvents:UIControlEventTouchUpInside];
       tap.backgroundColor = [UIColor redColor];
       [_bottomPanel.view addSubview:tap];
       [_bottomPanel.view sendSubviewToBack:tap];
+      tap.autoresizingMask = UIViewAutoresizingFlexibleWidth;
       
-      _bottomPanel.view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
       [self.bottomPanelContainer addSubview:_bottomPanel.view];
+      
+      //  self.bottomPanel.view.translatesAutoresizingMaskIntoConstraints = NO;
+      
+      //      NSDictionary *views = @{ @"bottomPanel" : self.bottomPanelContainer};
+      //
+      //      [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[bottomPanel]-|" options:0 metrics:nil views:views]];
     }
     
     self.status = ARTOpenTypePartly;
@@ -171,16 +181,27 @@ static CGFloat const ARTDefaultBottomPanelClosedHeight = 55.f;
 
 #pragma mark Animation
 
+- (void)animateCenterPanel:(BOOL)close;
+{
+  if (close) {
+    if (self.status == ARTOpenTypeFully) {
+      [self bottomPanelOpen:ARTOpenTypeClosed];
+    }
+    [self animateCenterPanel];
+  } else  {
+    if (self.status == ARTOpenTypeClosed) {
+      [self animateCenterPanel];
+    }
+  }
+}
+
 - (void)animateCenterPanel;
 {
   BOOL open = self.status == ARTOpenTypeClosed;
-  if (self.status == ARTOpenTypeFully) {
-    [self bottomPanelOpen:ARTOpenTypePartly];
-  }
   
-  [UIView animateWithDuration:0.5f delay:0.0f options:UIViewAnimationOptionCurveLinear|UIViewAnimationOptionLayoutSubviews animations:^{
+  [UIView animateWithDuration:0.5f delay:0.0f options:UIViewAnimationOptionCurveLinear | UIViewAnimationOptionLayoutSubviews animations:^{
     CGRect frame = self.view.bounds;
-    frame.size.height = open ? self.view.bounds.size.height - ARTDefaultBottomPanelClosedHeight : self.view.bounds.size.height;
+    frame.size.height = open ? self.view.bounds.size.height - (self.bottomPanelClosedHeight + self.bottomCenterPanelOffset) : self.view.bounds.size.height;
     self.centerPanelContainer.frame = frame;
   } completion:^(BOOL finished) {
     if (!open) {
@@ -196,7 +217,6 @@ static CGFloat const ARTDefaultBottomPanelClosedHeight = 55.f;
   } else {
     openType = ARTOpenTypeFully;
   }
-  //openType = !openType || openType > ARTOpenTypeClosed ? ARTOpenTypeFully : openType;
   BOOL open = self.status == ARTOpenTypePartly && openType == ARTOpenTypeFully;
   
   if (open) {
@@ -206,19 +226,26 @@ static CGFloat const ARTDefaultBottomPanelClosedHeight = 55.f;
     [self.bottomPanel.view removeGestureRecognizer:self.panGestureRecoginser];
   }
   
-  [self.delegate bottomPanelOpened:openType];
+  [self.bottomDelegate bottomPanelOpened:openType];
   
   [UIView animateWithDuration:0.5f delay:0.0f options:UIViewAnimationOptionCurveLinear|UIViewAnimationOptionLayoutSubviews animations:^{
     CGRect frame = self.view.bounds;
-    frame.origin.y = open ? self.bottomPanelDistanceFromTop : self.view.frame.size.height - self.bottomPanelClosedHeight;;
+    
+    
+    frame.origin.y = open ? self.bottomPanelDistanceFromTop : (self.view.frame.size.height - self.bottomPanelClosedHeight) + self.bounceOffset;
     frame.size.height = open ? frame.size.height - self.bottomPanelDistanceFromTop : self.bottomPanelClosedHeight;
     self.bottomPanel.view.frame = frame;
     self.bottomPanelContainer.center =  CGPointMake(self.bottomPanelContainer.center.x, self.view.bounds.size.height / 2);
     self.centerPanel.view.transform = open ? CGAffineTransformMakeScale(0.9, 0.9) : CGAffineTransformMakeScale(1, 1);
   } completion:^(BOOL finished) {
-    self.status = open ? ARTOpenTypeFully : ARTOpenTypePartly;
+    self.status = openType;
     if (!open) {
       [self.view bringSubviewToFront:self.centerPanelContainer];
+      [UIView animateWithDuration:ARTDefaultBounceDuration animations:^{
+        CGRect frame = self.bottomPanel.view.frame;
+        frame.origin.y = frame.origin.y - self.bounceOffset;
+        self.bottomPanel.view.frame = frame;
+      }];
     }
   }];
 }
@@ -227,6 +254,7 @@ static CGFloat const ARTDefaultBottomPanelClosedHeight = 55.f;
 
 - (void)addPanGestureToView:(UIView *)view;
 {
+  [self.bottomPanel.view removeGestureRecognizer:self.panGestureRecoginser];
   self.panGestureRecoginser = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePan:)];
   self.panGestureRecoginser.maximumNumberOfTouches = 1;
   self.panGestureRecoginser.minimumNumberOfTouches = 1;
@@ -243,6 +271,9 @@ static CGFloat const ARTDefaultBottomPanelClosedHeight = 55.f;
     [pan setTranslation:CGPointZero inView:self.bottomPanelContainer];
     
     CGFloat origin = self.bottomPanelContainer.frame.origin.y;
+    [self.bottomDelegate panGestureOffset:self.bottomPanelContainer.frame.origin state:pan.state];
+    
+    NSLog(@"Origin %f Trasnform %f Drag Offset %f", origin, self.transformOffset, self.dragOffset);
     
     if (origin < self.transformOffset) {
       CGFloat scale = ((origin / self.transformOffset) / 10) + 0.9;
@@ -252,8 +283,6 @@ static CGFloat const ARTDefaultBottomPanelClosedHeight = 55.f;
     
     if (sender.state == UIGestureRecognizerStateEnded) {
       
-      NSLog(@"origin = %f", self.bottomPanelContainer.frame.origin.y);
-      NSLog(@"Center = %f", self.bottomPanelContainer.center.y);
       if (origin > self.dragOffset) {
         self.status = ARTOpenTypeFully;
         [self bottomPanelOpen:ARTOpenTypePartly];
@@ -263,6 +292,49 @@ static CGFloat const ARTDefaultBottomPanelClosedHeight = 55.f;
       }
     }
   }
+}
+
+- (void)willAnimateRotationToInterfaceOrientation:(__unused UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration;
+{
+  // self.bottomPanelContainer.frame = [self adjustCenterFrame];
+  [self adjustCenterFrame];
+  [self adjustBottomFrame];
+  //self.view.frame = [self adjustCenterFrame];
+  self.dragOffset =  self.view.frame.size.height - (self.view.frame.size.height / (toInterfaceOrientation == UIInterfaceOrientationLandscapeRight || toInterfaceOrientation == UIInterfaceOrientationLandscapeLeft ? 3 : 4));
+  self.transformOffset =  self.view.frame.size.height - (self.view.frame.size.height / 2);
+}
+
+#pragma mark - Panel Sizing
+
+- (void)adjustCenterFrame;
+{
+  CGRect frame = self.view.bounds;
+  if (self.status == ARTOpenTypeClosed) {
+    frame.origin.y = 0;
+  } else {
+    frame.size.height = self.view.bounds.size.height - (self.bottomPanelClosedHeight + self.bottomCenterPanelOffset);
+    frame.origin.y = 0;
+  }
+  self.centerPanelContainer.frame = frame;
+}
+
+- (void)adjustBottomFrame;
+{
+  CGRect frame = self.view.bounds;
+ 
+  if (self.status == ARTOpenTypeClosed) {
+    frame.origin.y = frame.size.height - self.bottomPanelClosedHeight;
+    frame.size.height = self.bottomPanelClosedHeight;
+    self.bottomPanel.view.frame = frame;
+  } else if (self.status == ARTOpenTypeFully) {
+    frame.origin.y = self.bottomPanelDistanceFromTop;
+    frame.size.height = frame.size.height - self.bottomPanelDistanceFromTop;
+  } else {
+    frame.origin.y = (frame.size.height - self.bottomPanelClosedHeight) + self.bounceOffset;
+    frame.size.height =  self.bottomPanelClosedHeight;
+  }
+  
+  self.bottomPanelContainer.frame = frame;
 }
 
 @end

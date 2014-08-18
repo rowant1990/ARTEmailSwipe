@@ -13,6 +13,7 @@
 
 - (void)awakeFromNib;
 {
+  self.bottomPanelClosedHeight = 50.f;
   [self setCenterPanel:[self.storyboard instantiateViewControllerWithIdentifier:@"ARTCenterViewControllerIdentifier"]];
   [self setBottomPanel:[self.storyboard instantiateViewControllerWithIdentifier:@"ARTBottomViewControllerIdentifier"]];
 }
