@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6205" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
-        <deployment defaultVersion="1536" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6198"/>
         <capability name="Constraints with attributes relative to the layout margin" minToolsVersion="6.0"/>
     </dependencies>
@@ -288,11 +287,12 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vc1-Mo-k3c">
-                                <rect key="frame" x="7" y="9" width="48" height="30"/>
+                                <rect key="frame" x="16" y="9" width="48" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="48" id="m3y-M5-Zx4"/>
                                     <constraint firstAttribute="height" constant="30" id="yGK-ER-oNx"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <state key="normal" title="Cancel"/>
                                 <connections>
                                     <action selector="cancelPrssed:" destination="gid-yI-6fh" eventType="touchUpInside" id="dKr-Lx-LH9"/>
@@ -310,7 +310,7 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New Message" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LXG-Ve-ptL">
-                                <rect key="frame" x="105" y="13" width="111" height="21"/>
+                                <rect key="frame" x="114" y="13" width="102" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -325,7 +325,7 @@
                             <constraint firstAttribute="trailingMargin" secondItem="ZFO-CK-jfy" secondAttribute="trailing" constant="-16" id="Sb9-2L-hyK"/>
                             <constraint firstItem="LXG-Ve-ptL" firstAttribute="leading" secondItem="Vc1-Mo-k3c" secondAttribute="trailing" constant="50" id="UuA-Er-KmG"/>
                             <constraint firstItem="Vc1-Mo-k3c" firstAttribute="top" secondItem="ZFO-CK-jfy" secondAttribute="bottom" constant="8" id="ckT-FC-W7d"/>
-                            <constraint firstItem="Vc1-Mo-k3c" firstAttribute="leading" secondItem="IEy-Ew-7hB" secondAttribute="leadingMargin" constant="-9" id="e9d-wt-M75"/>
+                            <constraint firstItem="Vc1-Mo-k3c" firstAttribute="leading" secondItem="IEy-Ew-7hB" secondAttribute="leadingMargin" id="e9d-wt-M75"/>
                             <constraint firstAttribute="trailingMargin" secondItem="GE3-Dz-1Hn" secondAttribute="trailing" constant="-16" id="ihz-NY-p2q"/>
                             <constraint firstItem="ZFO-CK-jfy" firstAttribute="top" secondItem="qBk-Bo-bhQ" secondAttribute="bottom" id="nN5-oo-dFP"/>
                             <constraint firstItem="ZFO-CK-jfy" firstAttribute="leading" secondItem="IEy-Ew-7hB" secondAttribute="leadingMargin" constant="-16" id="pbo-fI-3xe"/>

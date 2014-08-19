@@ -64,6 +64,9 @@ typedef NS_ENUM(NSInteger, ARTOpenType) {
 // Optional - the gap between the center view and the bottom view when its partailly closed.
 @property (nonatomic, assign) CGFloat bottomCenterViewOffset;
 
+// Optional - disable status bar color change
+@property (nonatomic, assign) BOOL disableStatusBarAnimation;
+
 // call open bottom viewwhen you want to show the bottom view controller. By default it will open fully if you only want it to open partially on launch then pass through the enum type ARTOpenTypePartly.
 - (void)openBottomView;
 - (void)openBottomView:(ARTOpenType)openType;

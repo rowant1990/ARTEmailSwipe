@@ -232,6 +232,7 @@ static CGFloat const ARTDefaultBottomCenterViewOffset = 5.f;
   }
   
   [self.bottomDelegate bottomViewOpened:openType];
+  self.disableStatusBarAnimation ? : [[UIApplication sharedApplication] setStatusBarStyle:open ? UIStatusBarStyleLightContent : UIStatusBarStyleDefault animated:YES];
   
   [UIView animateWithDuration:0.5f animations:^{
     CGRect frame = self.view.bounds;
@@ -240,6 +241,7 @@ static CGFloat const ARTDefaultBottomCenterViewOffset = 5.f;
     frame.size.height = open ? frame.size.height - self.bottomViewDistanceFromTop : self.bottomViewClosedHeight;
     self.bottomViewContainer.frame = frame;
     self.centerViewContainer.transform = open ? CGAffineTransformMakeScale(0.9, 0.9) : CGAffineTransformMakeScale(1, 1);
+    
   } completion:^(BOOL finished) {
     self.status = openType;
     if (!open) {
@@ -278,8 +280,10 @@ static CGFloat const ARTDefaultBottomCenterViewOffset = 5.f;
     
     if (origin < self.transformOffset) {
       CGFloat scale = ((origin / self.transformOffset) / 10) + 0.9;
-      
       self.centerViewContainer.transform = CGAffineTransformMakeScale(scale, scale);
+      self.disableStatusBarAnimation ? : [[UIApplication sharedApplication] setStatusBarStyle: UIStatusBarStyleLightContent animated:YES];
+    } else {
+      self.disableStatusBarAnimation ? : [[UIApplication sharedApplication] setStatusBarStyle: UIStatusBarStyleDefault animated:YES];
     }
     
     if (sender.state == UIGestureRecognizerStateEnded) {
