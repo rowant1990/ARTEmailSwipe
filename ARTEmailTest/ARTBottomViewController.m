@@ -29,18 +29,16 @@
 
 - (IBAction)cancelPrssed:(id)sender;
 {
-  [self.slideViewController closeBottomPanel];
+  [self.slideViewController closeBottomView];
 }
 
 #pragma mark ARTSlideViewDelegate
 
-- (void)bottomPanelOpened:(ARTOpenType)type;
+- (void)bottomViewOpened:(ARTOpenType)type;
 {
   [UIView animateWithDuration:0.5f animations:^{
     self.cancelButton.alpha = type == ARTOpenTypeFully;
-  } completion:^(BOOL finished) {
-    
-  }];
+  } completion:nil];
 }
 
 #pragma mark Bottom Gesture Delegate

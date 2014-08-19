@@ -26,14 +26,11 @@
 
 #import "ARTEmailSwipe.h"
 
-#define ISIOS6    ([[[UIDevice currentDevice] systemVersion] floatValue] < 7 && [[[UIDevice currentDevice] systemVersion] floatValue] >= 6)
-
-static CGFloat const ARTDefaultBottomPanelDistanceFromTop = 40.f;
-static CGFloat const ARTDefaultBottomPanelClosedHeight = 46.f;
+static CGFloat const ARTDefaultBottomViewDistanceFromTop = 40.f;
+static CGFloat const ARTDefaultBottomViewClosedHeight = 46.f;
 static CGFloat const ARTDefaultBounceOffset = 5.f;
 static CGFloat const ARTDefaultBounceDuration = 0.2f;
-static CGFloat const ARTDefaultBottomCenterPanelOffset = 5.f;
-static CGFloat const ARTStatusBar = 20.f;
+static CGFloat const ARTDefaultBottomCenterViewOffset = 5.f;
 
 @interface ARTEmailSwipe ()
 
@@ -70,11 +67,11 @@ static CGFloat const ARTStatusBar = 20.f;
 - (void)configure;
 {
   self.status = ARTOpenTypeClosed;
-  self.bottomPanelClosedHeight = ARTDefaultBottomPanelClosedHeight;
-  self.bottomPanelDistanceFromTop = ARTDefaultBottomPanelDistanceFromTop - (ISIOS6 ? 20 : 0);
+  self.bottomViewClosedHeight = ARTDefaultBottomViewClosedHeight;
+  self.bottomViewDistanceFromTop = ARTDefaultBottomViewDistanceFromTop;
   self.bounceOffset = ARTDefaultBounceOffset;
   self.bounceAnimationDuration = ARTDefaultBounceDuration;
-  self.bottomCenterPanelOffset = ARTDefaultBottomCenterPanelOffset;
+  self.bottomCenterViewOffset = ARTDefaultBottomCenterViewOffset;
 }
 
 - (void)viewDidLoad;
@@ -88,30 +85,29 @@ static CGFloat const ARTStatusBar = 20.f;
   self.bottomViewContainer = [[UIView alloc] initWithFrame:self.view.bounds];
   self.bottomViewContainer.frame =  self.view.bounds;
   self.bottomViewContainer.clipsToBounds = YES;
-  //self.bottomViewController.view.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
   
   [self.view addSubview:self.bottomViewContainer];
   [self.view addSubview:self.centerViewContainer];
   
-  [self addCenterPanel];
+  [self addCenterView];
 }
 
-- (void)setCenterViewController:(UIViewController *)centerPanel;
+- (void)setCenterViewController:(UIViewController *)centerView;
 {
-  if (centerPanel != _centerViewController) {
+  if (centerView != _centerViewController) {
     [_centerViewController willMoveToParentViewController:nil];
     [_centerViewController.view removeFromSuperview];
     [_centerViewController removeFromParentViewController];
-    _centerViewController = centerPanel;
+    _centerViewController = centerView;
     if (_centerViewController) {
       [self addChildViewController:_centerViewController];
       [_centerViewController didMoveToParentViewController:self];
     }
   }
-  [self addCenterPanel];
+  [self addCenterView];
 }
 
-- (void)addCenterPanel;
+- (void)addCenterView;
 {
   _centerViewController.view.frame = self.centerViewContainer.bounds;
   [self addChildViewController:_centerViewController];
@@ -120,13 +116,13 @@ static CGFloat const ARTStatusBar = 20.f;
   
 }
 
-- (void)setBottomViewController:(UIViewController *)bottomPanel;
+- (void)setBottomViewController:(UIViewController *)bottomView;
 {
-  if (bottomPanel != _bottomViewController) {
+  if (bottomView != _bottomViewController) {
     [_bottomViewController willMoveToParentViewController:nil];
     [_bottomViewController.view removeFromSuperview];
     [_bottomViewController removeFromParentViewController];
-    _bottomViewController = bottomPanel;
+    _bottomViewController = bottomView;
     if (_bottomViewController) {
       [self addChildViewController:_bottomViewController];
       [_bottomViewController didMoveToParentViewController:self];
@@ -134,20 +130,20 @@ static CGFloat const ARTStatusBar = 20.f;
   }
 }
 
-- (void)loadBottomPanel:(ARTOpenType)openType;
+- (void)loadBottomView:(ARTOpenType)openType;
 {
   if (self.bottomViewController) {
     
     if (!_bottomViewController.view.superview) {
       
       CGRect frame = self.bottomViewContainer.bounds;
-      frame.origin.y = (self.view.bounds.size.height - self.bottomPanelClosedHeight) - (ISIOS6 ? ARTStatusBar : 0);
-      frame.size.height = self.bottomPanelClosedHeight;
+      frame.origin.y = self.view.bounds.size.height - self.bottomViewClosedHeight;
+      frame.size.height = self.bottomViewClosedHeight;
       self.bottomViewContainer.frame = frame;
       
       UIButton *tap = [UIButton buttonWithType:UIButtonTypeCustom];
-      tap.frame = CGRectMake(0, 0, self.view.frame.size.width, self.bottomPanelClosedHeight);
-      [tap addTarget:self action:@selector(bottomPanelOpen:) forControlEvents:UIControlEventTouchUpInside];
+      tap.frame = CGRectMake(0, 0, self.view.frame.size.width, self.bottomViewClosedHeight);
+      [tap addTarget:self action:@selector(bottomViewOpen:) forControlEvents:UIControlEventTouchUpInside];
       tap.backgroundColor = [UIColor clearColor];
       [self.bottomViewController.view addSubview:tap];
       [self.bottomViewController.view sendSubviewToBack:tap];
@@ -155,58 +151,58 @@ static CGFloat const ARTStatusBar = 20.f;
       NSDictionary *constraintView = @{ @"tap" : tap};
       tap.translatesAutoresizingMaskIntoConstraints = NO;
       [self.bottomViewController.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[tap]-0-|" options:0 metrics:nil views:constraintView]];
-      [self.bottomViewController.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-(0)-[tap(height)]" options:0 metrics:@{@"height": @(self.bottomPanelClosedHeight)} views:constraintView]];
+      [self.bottomViewController.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-(0)-[tap(height)]" options:0 metrics:@{@"height": @(self.bottomViewClosedHeight)} views:constraintView]];
       
       [self.bottomViewContainer addSubview:_bottomViewController.view];
     }
     
     self.status = ARTOpenTypePartly;
-    [self bottomPanelOpen:openType];
+    [self bottomViewOpen:openType];
   }
 }
 
-- (void)openBottomPanel;
+- (void)openBottomView;
 {
-  [self openBottomPanel:ARTOpenTypeFully];
+  [self openBottomView:ARTOpenTypeFully];
 }
 
-- (void)openBottomPanel:(ARTOpenType)openType;
+- (void)openBottomView:(ARTOpenType)openType;
 {
-  [self animateCenterPanel:NO];
+  [self animateCenterView:NO];
   self.status = openType;
   
-  [self loadBottomPanel:openType];
+  [self loadBottomView:openType];
 }
 
-- (void)closeBottomPanel;
+- (void)closeBottomView;
 {
-  [self animateCenterPanel:YES];
+  [self animateCenterView:YES];
   self.status = ARTOpenTypeClosed;
 }
 
 #pragma mark Animation
 
-- (void)animateCenterPanel:(BOOL)close;
+- (void)animateCenterView:(BOOL)close;
 {
   if (close) {
     if (self.status == ARTOpenTypeFully) {
-      [self bottomPanelOpen:ARTOpenTypeClosed];
+      [self bottomViewOpen:ARTOpenTypeClosed];
     }
-    [self animateCenterPanel];
+    [self animateCenterView];
   } else  {
     if (self.status == ARTOpenTypeClosed) {
-      [self animateCenterPanel];
+      [self animateCenterView];
     }
   }
 }
 
-- (void)animateCenterPanel;
+- (void)animateCenterView;
 {
   BOOL open = self.status == ARTOpenTypeClosed;
   
   [UIView animateWithDuration:0.5f animations:^{
     CGRect frame = self.view.bounds;
-    frame.size.height = open ? self.view.bounds.size.height - (self.bottomPanelClosedHeight + self.bottomCenterPanelOffset) : self.view.bounds.size.height;
+    frame.size.height = open ? self.view.bounds.size.height - (self.bottomViewClosedHeight + self.bottomCenterViewOffset) : self.view.bounds.size.height;
     self.centerViewContainer.frame = frame;
   } completion:^(BOOL finished) {
     if (!open) {
@@ -215,7 +211,7 @@ static CGFloat const ARTStatusBar = 20.f;
   }];
 }
 
-- (void)bottomPanelOpen:(ARTOpenType)openType;
+- (void)bottomViewOpen:(ARTOpenType)openType;
 {
   
   if (openType != ARTOpenTypeClosed) {
@@ -235,13 +231,13 @@ static CGFloat const ARTStatusBar = 20.f;
     [self.bottomViewController.view removeGestureRecognizer:self.panGestureRecoginser];
   }
   
-  [self.bottomDelegate bottomPanelOpened:openType];
+  [self.bottomDelegate bottomViewOpened:openType];
   
   [UIView animateWithDuration:0.5f animations:^{
     CGRect frame = self.view.bounds;
     
-    frame.origin.y = open ? self.bottomPanelDistanceFromTop : ((frame.size.height - self.bottomPanelClosedHeight) + self.bounceOffset) - (ISIOS6 ? ARTStatusBar : 0);
-    frame.size.height = open ? frame.size.height - self.bottomPanelDistanceFromTop : self.bottomPanelClosedHeight + (ISIOS6 ? 20 : 0);
+    frame.origin.y = open ? self.bottomViewDistanceFromTop : (frame.size.height - self.bottomViewClosedHeight) + self.bounceOffset;
+    frame.size.height = open ? frame.size.height - self.bottomViewDistanceFromTop : self.bottomViewClosedHeight;
     self.bottomViewContainer.frame = frame;
     self.centerViewContainer.transform = open ? CGAffineTransformMakeScale(0.9, 0.9) : CGAffineTransformMakeScale(1, 1);
   } completion:^(BOOL finished) {
@@ -290,10 +286,10 @@ static CGFloat const ARTStatusBar = 20.f;
       
       if (origin > self.dragOffset) {
         self.status = ARTOpenTypeFully;
-        [self bottomPanelOpen:ARTOpenTypePartly];
+        [self bottomViewOpen:ARTOpenTypePartly];
       } else {
         self.status = ARTOpenTypePartly;
-        [self bottomPanelOpen:ARTOpenTypeFully];
+        [self bottomViewOpen:ARTOpenTypeFully];
       }
     }
   }
@@ -317,13 +313,13 @@ static CGFloat const ARTStatusBar = 20.f;
   if (self.status == ARTOpenTypeClosed) {
     frame.origin.y = 0;
   } else if (self.status == ARTOpenTypeFully) {
-    frame.size.height = self.view.bounds.size.height - (self.bottomPanelClosedHeight + self.bottomCenterPanelOffset);
+    frame.size.height = self.view.bounds.size.height - (self.bottomViewClosedHeight + self.bottomCenterViewOffset);
     self.centerViewContainer.transform = CGAffineTransformIdentity;
     self.centerViewContainer.frame = frame;
     self.centerViewContainer.transform = CGAffineTransformMakeScale(0.9, 0.9);
     return;
   } else {
-    frame.size.height = self.view.bounds.size.height - (self.bottomPanelClosedHeight + self.bottomCenterPanelOffset);
+    frame.size.height = self.view.bounds.size.height - (self.bottomViewClosedHeight + self.bottomCenterViewOffset);
   }
   self.centerViewContainer.frame = frame;
 }
@@ -333,11 +329,11 @@ static CGFloat const ARTStatusBar = 20.f;
   CGRect frame = self.view.bounds;
   
  if (self.status == ARTOpenTypeFully) {
-    frame.origin.y = self.bottomPanelDistanceFromTop;
-    frame.size.height = frame.size.height - self.bottomPanelDistanceFromTop;
+    frame.origin.y = self.bottomViewDistanceFromTop;
+    frame.size.height = frame.size.height - self.bottomViewDistanceFromTop;
   } else {
-    frame.origin.y = (frame.size.height - self.bottomPanelClosedHeight) - (ISIOS6 ? ARTStatusBar : 0);
-    frame.size.height = self.bottomPanelClosedHeight + (ISIOS6 ? ARTStatusBar : 0);
+    frame.origin.y = frame.size.height - self.bottomViewClosedHeight;
+    frame.size.height = self.bottomViewClosedHeight;
   }
   self.bottomViewContainer.frame = frame;
 }
