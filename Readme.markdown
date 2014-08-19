@@ -25,7 +25,7 @@ Example 1: Code
 	
 	self.viewController = [[ARTEmailSwipe alloc] init];
   
-  // you will want to use your own custom classes here, but for the example I have jsut instantiated it with the UIViewController class.
+  // you will want to use your own custom classes here, but for the example I have just instantiated it with the UIViewController class.
 	self.viewController.centerViewController = [[UIViewController alloc] init];
 	self.viewController.bottomViewController = [[UIViewController alloc] init];
   
@@ -51,8 +51,8 @@ Example 2: Storyboards
 
 -(void) awakeFromNib
 {
-  [self setLeftPanel:[self.storyboard instantiateViewControllerWithIdentifier:@"centerViewController"]];
-  [self setCenterPanel:[self.storyboard instantiateViewControllerWithIdentifier:@"bottomViewController"]];
+  [self setCenterViewController:[self.storyboard instantiateViewControllerWithIdentifier:@"bottomViewController"]];
+  [self setBottomViewController:[self.storyboard instantiateViewControllerWithIdentifier:@"centerViewController"]];
 }
 
 ```
@@ -65,7 +65,7 @@ To install using cocoapods just add the below to your Podfile,
 
     pod 'ARTEmailSwipe'
   
-If you are not using cocoapods check out that link again :)
+If you are not using cocoapods check out that link again :).
 Or just add ARTEmailSwipe class and UIViewController+ARTEmailSwipe category to your project.
 
 
