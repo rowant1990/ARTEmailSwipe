@@ -5,8 +5,7 @@ ARTEmailSwipe is a UIViewController container which allows you to have one view 
 
 Demo
 ---
-![iPhone Example](https://img.skitch.com/20120322-dx6k69577ra37wwgqgmsgksqpx.jpg)
-![iPad Example](https://img.skitch.com/20120322-ttu951nfb8cpd5ti5r1ni8428y.jpg)
+![alt tag](https://github.com/rowant1990/ARTEmailSwipe/blob/development/Resources/artswipeviewscreencast.gif)
 
 Example 1: Code
 ---
