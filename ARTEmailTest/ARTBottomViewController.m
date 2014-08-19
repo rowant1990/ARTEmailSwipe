@@ -43,9 +43,11 @@
   }];
 }
 
+#pragma mark Bottom Gesture Delegate
+
 - (void)panGestureOffset:(CGPoint)offset state:(UIGestureRecognizerState)state;
 {
-  CGFloat origin = offset.y;
+  // Add code to react to pan gesture
 }
 
 @end

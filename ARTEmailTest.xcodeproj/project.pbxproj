@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		34C9251819A34F8800AAC92D /* ARTSecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 34C9251719A34F8800AAC92D /* ARTSecondViewController.m */; };
+		34C9251B19A3510000AAC92D /* ARTNewCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 34C9251A19A3510000AAC92D /* ARTNewCenterViewController.m */; };
 		34CF8753199E415000A6A1BF /* UIViewController+ARTEmailSwipe.m in Sources */ = {isa = PBXBuildFile; fileRef = 34CF8752199E415000A6A1BF /* UIViewController+ARTEmailSwipe.m */; };
 		CAF7D4A3199D4C18006B06F5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CAF7D4A2199D4C18006B06F5 /* main.m */; };
 		CAF7D4A6199D4C18006B06F5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CAF7D4A5199D4C18006B06F5 /* AppDelegate.m */; };
@@ -31,6 +33,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		34C9251619A34F8800AAC92D /* ARTSecondViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARTSecondViewController.h; sourceTree = "<group>"; };
+		34C9251719A34F8800AAC92D /* ARTSecondViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARTSecondViewController.m; sourceTree = "<group>"; };
+		34C9251919A3510000AAC92D /* ARTNewCenterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARTNewCenterViewController.h; sourceTree = "<group>"; };
+		34C9251A19A3510000AAC92D /* ARTNewCenterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARTNewCenterViewController.m; sourceTree = "<group>"; };
 		34CF8751199E415000A6A1BF /* UIViewController+ARTEmailSwipe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+ARTEmailSwipe.h"; sourceTree = "<group>"; };
 		34CF8752199E415000A6A1BF /* UIViewController+ARTEmailSwipe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+ARTEmailSwipe.m"; sourceTree = "<group>"; };
 		CAF7D49D199D4C18006B06F5 /* ARTEmailTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ARTEmailTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -72,6 +78,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		34C9251C19A3510600AAC92D /* First Stage */ = {
+			isa = PBXGroup;
+			children = (
+				CAF7D4C9199D508A006B06F5 /* ARTCenterViewController.h */,
+				CAF7D4CA199D508A006B06F5 /* ARTCenterViewController.m */,
+				34C9251619A34F8800AAC92D /* ARTSecondViewController.h */,
+				34C9251719A34F8800AAC92D /* ARTSecondViewController.m */,
+			);
+			name = "First Stage";
+			sourceTree = "<group>";
+		};
+		34C9251D19A3511200AAC92D /* Second Stage */ = {
+			isa = PBXGroup;
+			children = (
+				34C9251919A3510000AAC92D /* ARTNewCenterViewController.h */,
+				34C9251A19A3510000AAC92D /* ARTNewCenterViewController.m */,
+			);
+			name = "Second Stage";
+			sourceTree = "<group>";
+		};
 		CAF7D494199D4C18006B06F5 = {
 			isa = PBXGroup;
 			children = (
@@ -98,10 +124,10 @@
 				CAF7D4CF199D59F3006B06F5 /* SlideView */,
 				CAF7D4C6199D4FD0006B06F5 /* ARTRootViewController.h */,
 				CAF7D4C7199D4FD0006B06F5 /* ARTRootViewController.m */,
-				CAF7D4C9199D508A006B06F5 /* ARTCenterViewController.h */,
-				CAF7D4CA199D508A006B06F5 /* ARTCenterViewController.m */,
 				CAF7D4CC199D510C006B06F5 /* ARTBottomViewController.h */,
 				CAF7D4CD199D510C006B06F5 /* ARTBottomViewController.m */,
+				34C9251C19A3510600AAC92D /* First Stage */,
+				34C9251D19A3511200AAC92D /* Second Stage */,
 				CAF7D4AD199D4C18006B06F5 /* Main.storyboard */,
 				CAF7D4B0199D4C18006B06F5 /* Images.xcassets */,
 				CAF7D4A7199D4C18006B06F5 /* ARTEmailTest.xcdatamodeld */,
@@ -247,10 +273,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				34C9251819A34F8800AAC92D /* ARTSecondViewController.m in Sources */,
 				CAF7D4A6199D4C18006B06F5 /* AppDelegate.m in Sources */,
 				CAF7D4CB199D508A006B06F5 /* ARTCenterViewController.m in Sources */,
 				CAF7D4A9199D4C18006B06F5 /* ARTEmailTest.xcdatamodeld in Sources */,
 				CAF7D4AC199D4C18006B06F5 /* ARTEmailSwipe.m in Sources */,
+				34C9251B19A3510000AAC92D /* ARTNewCenterViewController.m in Sources */,
 				CAF7D4CE199D510C006B06F5 /* ARTBottomViewController.m in Sources */,
 				34CF8753199E415000A6A1BF /* UIViewController+ARTEmailSwipe.m in Sources */,
 				CAF7D4A3199D4C18006B06F5 /* main.m in Sources */,
@@ -371,6 +399,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = ARTEmailTest/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -384,6 +413,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = ARTEmailTest/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";

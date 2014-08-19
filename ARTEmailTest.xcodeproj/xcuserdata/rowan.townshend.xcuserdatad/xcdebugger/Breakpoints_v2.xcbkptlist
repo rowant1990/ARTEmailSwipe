@@ -16,16 +16,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "ARTEmailTest/ARTEmailSwipe.m"
-            timestampString = "430063159.728807"
+            filePath = "ARTEmailTest/ARTBottomViewController.m"
+            timestampString = "430154187.083664"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "234"
-            endingLineNumber = "234"
-            landmarkName = "-bottomPanelOpen:"
+            startingLineNumber = "50"
+            endingLineNumber = "50"
+            landmarkName = "-panGestureOffset:state:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

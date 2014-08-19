@@ -26,6 +26,8 @@
 
 #import <UIKit/UIKit.h>
 
+#import "UIViewController+ARTEmailSwipe.h"
+
 typedef NS_ENUM(NSInteger, ARTOpenType) {
   ARTOpenTypeClosed,
   ARTOpenTypeFully,
@@ -41,8 +43,8 @@ typedef NS_ENUM(NSInteger, ARTOpenType) {
 
 @interface ARTEmailSwipe : UIViewController
 
-@property (nonatomic, strong) UIViewController *centerPanel;
-@property (nonatomic, strong) UIViewController *bottomPanel;
+@property (nonatomic, strong) UIViewController *centerViewController;
+@property (nonatomic, strong) UIViewController *bottomViewController;
 
 // Optional - assign a delegate if you need to notify either panels when the bottom panel is open or closed.
 @property (nonatomic, weak) id<ARTSlideViewDelegate>bottomDelegate;
