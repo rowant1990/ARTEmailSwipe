@@ -1,7 +1,7 @@
 ARTEmailSwipe
 ===
 
-ARTEmailSwipe is a UIViewController container, which allows you to have one view controller at the bottom, whilst keeping your main navigation separate. This is based on the iOS 8 emails implementation where you can have your new email open at the bottom whilst still viewing all your old emails above it. I also took a lot of inspiration from the JASidePanels project, which is what this was based on.
+ARTEmailSwipe is a UIViewController container, which allows you to have one view controller at the bottom, whilst keeping your main navigation separate. This is based on the iOS 8 emails implementation where you can have your new email open at the bottom whilst still viewing all your old emails above it. I also took a lot of inspiration from the JASidePanels project.
 
 Demo
 ---
@@ -72,6 +72,11 @@ Requirements
 ---
 
 ARTEmailSwipe requires iOS 6.0+ and Xcode 5.1.1+ The projects uses ARC, but it may be used with non-ARC projects by setting the: ` -fobjc-arc ` compiler flag on ` ARTEmailSwipe.m `. You can set this flag under Target -> Build Phases -> Compile Sources
+
+Futher Work
+---
+
+In the future it will allow you to open multiple email views like in iOS8 Emails, and you will be able to slide through each view like with the tabs in safari, to choose which one you want.
 
 License
 ---
