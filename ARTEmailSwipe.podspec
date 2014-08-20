@@ -2,7 +2,7 @@ Pod::Spec.new do |s|
   
   s.name         = "ARTEmailSwipe"
   s.version      = "1.0.0"
-  s.summary      = "Simple library to handle Touch ID verfification"
+  s.summary      = "ARTEmailSwipe is a container class mimiging the new emails imlemtation in iOS8."
   s.homepage     = "https://github.com/rowant1990/ARTEmailSwipe"
   s.license      = { :type => 'MIT', :text => 'Copyright 2014. Rowan Townshend. This library is distributed under the terms of the MIT/X11.' }
   s.author             = { "Rowan Townshend" => "rowan.townshend@degree53.com" }
