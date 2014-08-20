@@ -68,6 +68,20 @@ If you are not using cocoapods check out that link again :).
 Or just add ARTEmailSwipe class and UIViewController+ARTEmailSwipe category to your project.
 
 
+To open and close the bottom view call one of the three methods below.
+
+```  objc
+    // call open bottom viewwhen you want to show the bottom view controller. By default it will open fully if you only want it to open partially on launch then pass through the enum type ARTOpenTypePartly.
+    - (void)openBottomView;
+    - (void)openBottomView:(ARTOpenType)openType;
+
+    // close bottom panel
+    - (void)closeBottomView;
+```
+
+You can also configure many of the settings used in the ARTEmailSwipe its all documented in ARTEmailSwipe.h.
+
+
 Requirements
 ---
 
