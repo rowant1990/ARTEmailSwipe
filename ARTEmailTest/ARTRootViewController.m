@@ -13,7 +13,6 @@
 
 - (void)awakeFromNib;
 {
-  self.disableStatusBarAnimation = NO;
   [self setCenterViewController:[self.storyboard instantiateViewControllerWithIdentifier:@"ARTCenterViewControllerIdentifier"]];
   [self setBottomViewController:[self.storyboard instantiateViewControllerWithIdentifier:@"ARTBottomViewControllerIdentifier"]];
 }
