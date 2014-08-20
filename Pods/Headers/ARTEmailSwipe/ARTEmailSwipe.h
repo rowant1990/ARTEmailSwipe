@@ -1,0 +1,1 @@
+../../ARTEmailSwipe/ARTEmailSwipe/ARTEmailSwipe.h

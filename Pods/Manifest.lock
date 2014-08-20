@@ -1,0 +1,10 @@
+PODS:
+  - ARTEmailSwipe (1.0.0)
+
+DEPENDENCIES:
+  - ARTEmailSwipe
+
+SPEC CHECKSUMS:
+  ARTEmailSwipe: 81aa07f7083a83897a0e3f7d4568934810e6bb4b
+
+COCOAPODS: 0.33.1
