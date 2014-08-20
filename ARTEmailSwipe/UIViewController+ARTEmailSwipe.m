@@ -29,7 +29,7 @@
 
 @implementation UIViewController (ARTEmailSwipe)
 
-- (ARTEmailSwipe *)slideViewController;
+- (ARTEmailSwipe *)emailSwipeViewController;
 {
   UIViewController *iter = self.parentViewController;
   while (iter) {

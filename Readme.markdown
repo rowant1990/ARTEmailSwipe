@@ -79,6 +79,8 @@ To open and close the bottom view call one of the three methods below.
 - (void)closeBottomView;
 ```
 
+To get a reference to the email swipe view controller, in this case the ARTRootViewController, you can use the UIViewController+ARTEmailSwipe category, which will return your ARTEmailSwipe class. From there you will be able to call the methods above. This category was taken from JASidePanels. 
+
 You can also configure many of the settings used in the ARTEmailSwipe its all documented in ARTEmailSwipe.h.
 
 

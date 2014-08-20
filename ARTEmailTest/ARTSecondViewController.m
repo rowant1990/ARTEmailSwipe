@@ -25,7 +25,7 @@
 - (IBAction)changeCenterView:(id)sender;
 {
   UIViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"ARTSecondCenterViewControllerIdentifier"];
-  [self.slideViewController setCenterViewController:vc];
+  [self.emailSwipeViewController setCenterViewController:vc];
 }
 
 @end

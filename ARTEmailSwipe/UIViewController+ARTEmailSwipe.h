@@ -29,6 +29,6 @@
 
 @interface UIViewController (ARTEmailSwipe)
 
-@property (nonatomic, weak, readonly) ARTEmailSwipe *slideViewController;
+@property (nonatomic, weak, readonly) ARTEmailSwipe *emailSwipeViewController;
 
 @end

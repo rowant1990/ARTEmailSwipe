@@ -29,7 +29,7 @@
 
 - (IBAction)emailClicked:(UIButton *)sender;
 {
-  [self.slideViewController openBottomView];
+  [self.emailSwipeViewController openBottomView];
 }
 
 @end

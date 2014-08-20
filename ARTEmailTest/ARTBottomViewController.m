@@ -24,12 +24,12 @@
 - (void)viewDidLoad;
 {
   [super viewDidLoad];
-  self.slideViewController.bottomDelegate = self;
+  self.emailSwipeViewController.bottomDelegate = self;
 }
 
 - (IBAction)cancelPrssed:(id)sender;
 {
-  [self.slideViewController closeBottomView];
+  [self.emailSwipeViewController closeBottomView];
 }
 
 #pragma mark ARTSlideViewDelegate
