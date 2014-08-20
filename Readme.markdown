@@ -50,8 +50,8 @@ Example 2: Storyboards
 
 -(void) awakeFromNib
 {
-  [self setCenterViewController:[self.storyboard instantiateViewControllerWithIdentifier:@"bottomViewController"]];
-  [self setBottomViewController:[self.storyboard instantiateViewControllerWithIdentifier:@"centerViewController"]];
+  [self setCenterViewController:[self.storyboard instantiateViewControllerWithIdentifier:@"centerViewController"]];
+  [self setBottomViewController:[self.storyboard instantiateViewControllerWithIdentifier:@"bottomViewController"]];
 }
 
 ```
