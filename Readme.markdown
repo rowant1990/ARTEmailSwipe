@@ -71,7 +71,7 @@ Or just add ARTEmailSwipe class and UIViewController+ARTEmailSwipe category to y
 Requirements
 ---
 
-ARTEmailSwipe requires iOS 7.0+ and Xcode 4.3+ The projects uses ARC, but it may be used with non-ARC projects by setting the: ` -fobjc-arc ` compiler flag on ` ARTEmailSwipe.m `. You can set this flag under Target -> Build Phases -> Compile Sources
+ARTEmailSwipe requires iOS 6.0+ and Xcode 5.1.1+ The projects uses ARC, but it may be used with non-ARC projects by setting the: ` -fobjc-arc ` compiler flag on ` ARTEmailSwipe.m `. You can set this flag under Target -> Build Phases -> Compile Sources
 
 License
 ---
