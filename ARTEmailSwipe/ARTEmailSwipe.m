@@ -40,6 +40,7 @@ static CGFloat const ARTStatusBar = 20.f;
 
 @property (nonatomic, strong) UIView *centerViewContainer;
 @property (nonatomic, strong) UIView *bottomViewContainer;
+@property (nonatomic, strong) UIButton *tapGesture;
 @property (nonatomic, strong) UIPanGestureRecognizer *panGestureRecoginser;
 
 @property (nonatomic, assign) ARTOpenType status;
@@ -98,7 +99,7 @@ static CGFloat const ARTStatusBar = 20.f;
   [self.view addSubview:self.bottomViewContainer];
   [self.view addSubview:self.centerViewContainer];
   
-  [self addCenterView];
+  [self addView:self.centerViewContainer withContainer:self.centerViewController];
 }
 
 - (void)setCenterViewController:(UIViewController *)centerView;
@@ -113,30 +114,45 @@ static CGFloat const ARTStatusBar = 20.f;
       [_centerViewController didMoveToParentViewController:self];
     }
   }
-  [self addCenterView];
+  [self addView:self.centerViewContainer withContainer:_centerViewController];
 }
 
-- (void)addCenterView;
+- (void)setBottomViewController:(UIViewController *)bottomViewController;
 {
-  _centerViewController.view.frame = self.centerViewContainer.bounds;
-  [self addChildViewController:_centerViewController];
-  [self.centerViewContainer addSubview:_centerViewController.view];
-  [_centerViewController didMoveToParentViewController:self];
-  
-}
-
-- (void)setBottomViewController:(UIViewController *)bottomView;
-{
-  if (bottomView != _bottomViewController) {
+  if (self.bottomViewController && self.status != ARTOpenTypeClosed) {
+    [self closeBottomView];
+    [self.bottomViewContainer removeFromSuperview];
+    self.bottomViewContainer = [[UIView alloc] initWithFrame:self.view.bounds];
+    self.bottomViewContainer.frame =  self.view.bounds;
+    self.bottomViewContainer.clipsToBounds = YES;
+    self.bottomViewContainer.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleHeight;
+    [self.view addSubview:self.bottomViewContainer];
+    [self.view bringSubviewToFront:self.centerViewContainer];
     [_bottomViewController willMoveToParentViewController:nil];
     [_bottomViewController.view removeFromSuperview];
     [_bottomViewController removeFromParentViewController];
-    _bottomViewController = bottomView;
+    _bottomViewController = bottomViewController;
+    [self addChildViewController:_bottomViewController];
+    [_bottomViewController didMoveToParentViewController:self];
+  } else if (bottomViewController != _bottomViewController) {
+    [_bottomViewController willMoveToParentViewController:nil];
+    [_bottomViewController.view removeFromSuperview];
+    [_bottomViewController removeFromParentViewController];
+    _bottomViewController = bottomViewController;
     if (_bottomViewController) {
       [self addChildViewController:_bottomViewController];
       [_bottomViewController didMoveToParentViewController:self];
     }
+    [self addView:self.bottomViewContainer withContainer:_bottomViewController];
   }
+}
+
+- (void)addView:(UIView *)view withContainer:(UIViewController *)container;
+{
+  container.view.frame = view.bounds;
+  [self addChildViewController:container];
+  [view addSubview:container.view];
+  [container didMoveToParentViewController:self];
 }
 
 - (void)loadBottomView:(ARTOpenType)openType;
@@ -149,18 +165,6 @@ static CGFloat const ARTStatusBar = 20.f;
       frame.origin.y = (self.view.bounds.size.height - self.bottomViewClosedHeight);
       frame.size.height = self.bottomViewClosedHeight;
       self.bottomViewContainer.frame = frame;
-      
-      UIButton *tap = [UIButton buttonWithType:UIButtonTypeCustom];
-      tap.frame = CGRectMake(0, 0, self.view.frame.size.width, self.bottomViewClosedHeight);
-      [tap addTarget:self action:@selector(bottomViewOpen:) forControlEvents:UIControlEventTouchUpInside];
-      tap.backgroundColor = [UIColor clearColor];
-      [self.bottomViewController.view addSubview:tap];
-      [self.bottomViewController.view sendSubviewToBack:tap];
-      
-      NSDictionary *constraintView = @{ @"tap" : tap};
-      tap.translatesAutoresizingMaskIntoConstraints = NO;
-      [self.bottomViewController.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[tap]-0-|" options:0 metrics:nil views:constraintView]];
-      [self.bottomViewController.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-(0)-[tap(height)]" options:0 metrics:@{@"height": @(self.bottomViewClosedHeight)} views:constraintView]];
       
       [self.bottomViewContainer addSubview:_bottomViewController.view];
     }
@@ -222,7 +226,6 @@ static CGFloat const ARTStatusBar = 20.f;
 
 - (void)bottomViewOpen:(ARTOpenType)openType;
 {
-  
   if (openType != ARTOpenTypeClosed) {
     if (self.status == ARTOpenTypeFully) {
       openType = ARTOpenTypePartly;
@@ -240,6 +243,7 @@ static CGFloat const ARTStatusBar = 20.f;
     [self.bottomViewController.view removeGestureRecognizer:self.panGestureRecoginser];
   }
   
+  [self addTapGesture:open];
   [self.bottomDelegate bottomViewOpened:openType];
   self.disableStatusBarAnimation ? : [[UIApplication sharedApplication] setStatusBarStyle:open ? UIStatusBarStyleLightContent : UIStatusBarStyleDefault animated:YES];
   
@@ -263,6 +267,19 @@ static CGFloat const ARTStatusBar = 20.f;
       }];
     }
   }];
+}
+
+- (void)addTapGesture:(BOOL)add;
+{
+  if (!add) {
+    [self.view addSubview:self.tapGesture];
+    NSDictionary *constraintView = @{ @"tap" : self.tapGesture};
+    _tapGesture.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[tap]-0-|" options:0 metrics:nil views:constraintView]];
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[tap(height)]-(0)-|" options:0 metrics:@{@"height": @(self.bottomViewClosedHeight)} views:constraintView]];
+  } else {
+    [self.tapGesture removeFromSuperview];
+  }
 }
 
 #pragma mark Gestures
@@ -318,7 +335,7 @@ static CGFloat const ARTStatusBar = 20.f;
 {
   [self adjustCenterFrame];
   [self adjustBottomFrame];
-
+  
   self.dragOffset =  self.view.bounds.size.height - (self.view.bounds.size.height / 4);
   self.transformOffset =  self.view.bounds.size.height - (self.view.bounds.size.height / 2);
 }
@@ -344,7 +361,7 @@ static CGFloat const ARTStatusBar = 20.f;
 {
   CGRect frame = self.view.bounds;
   
- if (self.status == ARTOpenTypeFully) {
+  if (self.status == ARTOpenTypeFully) {
     frame.origin.y = self.bottomViewDistanceFromTop;
     frame.size.height = frame.size.height - self.bottomViewDistanceFromTop;
   } else {
@@ -352,6 +369,18 @@ static CGFloat const ARTStatusBar = 20.f;
     frame.size.height = self.bottomViewClosedHeight;
   }
   self.bottomViewContainer.frame = frame;
+}
+
+#pragma mark Lazy Loading
+
+- (UIButton *)tapGesture;
+{
+  if (!_tapGesture) {
+    _tapGesture = [UIButton buttonWithType:UIButtonTypeCustom];
+    [_tapGesture addTarget:self action:@selector(bottomViewOpen:) forControlEvents:UIControlEventTouchUpInside];
+    _tapGesture.backgroundColor = [UIColor clearColor];
+  }
+  return _tapGesture;
 }
 
 @end
