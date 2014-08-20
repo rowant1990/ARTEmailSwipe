@@ -16,8 +16,8 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "CAF7D49C199D4C18006B06F5"
                BuildableName = "ARTEmailTest.app"
-               BlueprintName = "ARTEmailTest"
-               ReferencedContainer = "container:ARTEmailTest.xcodeproj">
+               BlueprintName = "ARTEmailSwipeDemo"
+               ReferencedContainer = "container:ARTEmailSwipeDemo.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -34,8 +34,8 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "CAF7D4B5199D4C19006B06F5"
                BuildableName = "ARTEmailTestTests.xctest"
-               BlueprintName = "ARTEmailTestTests"
-               ReferencedContainer = "container:ARTEmailTest.xcodeproj">
+               BlueprintName = "ARTEmailSwipeDemoTests"
+               ReferencedContainer = "container:ARTEmailSwipeDemo.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -44,8 +44,8 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "CAF7D49C199D4C18006B06F5"
             BuildableName = "ARTEmailTest.app"
-            BlueprintName = "ARTEmailTest"
-            ReferencedContainer = "container:ARTEmailTest.xcodeproj">
+            BlueprintName = "ARTEmailSwipeDemo"
+            ReferencedContainer = "container:ARTEmailSwipeDemo.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -63,8 +63,8 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "CAF7D49C199D4C18006B06F5"
             BuildableName = "ARTEmailTest.app"
-            BlueprintName = "ARTEmailTest"
-            ReferencedContainer = "container:ARTEmailTest.xcodeproj">
+            BlueprintName = "ARTEmailSwipeDemo"
+            ReferencedContainer = "container:ARTEmailSwipeDemo.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -81,8 +81,8 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "CAF7D49C199D4C18006B06F5"
             BuildableName = "ARTEmailTest.app"
-            BlueprintName = "ARTEmailTest"
-            ReferencedContainer = "container:ARTEmailTest.xcodeproj">
+            BlueprintName = "ARTEmailSwipeDemo"
+            ReferencedContainer = "container:ARTEmailSwipeDemo.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

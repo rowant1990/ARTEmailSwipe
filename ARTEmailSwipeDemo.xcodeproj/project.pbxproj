@@ -12,7 +12,6 @@
 		34CF8753199E415000A6A1BF /* UIViewController+ARTEmailSwipe.m in Sources */ = {isa = PBXBuildFile; fileRef = 34CF8752199E415000A6A1BF /* UIViewController+ARTEmailSwipe.m */; };
 		CAF7D4A3199D4C18006B06F5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CAF7D4A2199D4C18006B06F5 /* main.m */; };
 		CAF7D4A6199D4C18006B06F5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CAF7D4A5199D4C18006B06F5 /* AppDelegate.m */; };
-		CAF7D4A9199D4C18006B06F5 /* ARTEmailTest.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CAF7D4A7199D4C18006B06F5 /* ARTEmailTest.xcdatamodeld */; };
 		CAF7D4AC199D4C18006B06F5 /* ARTEmailSwipe.m in Sources */ = {isa = PBXBuildFile; fileRef = CAF7D4AB199D4C18006B06F5 /* ARTEmailSwipe.m */; };
 		CAF7D4AF199D4C18006B06F5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CAF7D4AD199D4C18006B06F5 /* Main.storyboard */; };
 		CAF7D4B1199D4C18006B06F5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CAF7D4B0199D4C18006B06F5 /* Images.xcassets */; };
@@ -39,17 +38,16 @@
 		34C9251A19A3510000AAC92D /* ARTNewCenterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARTNewCenterViewController.m; sourceTree = "<group>"; };
 		34CF8751199E415000A6A1BF /* UIViewController+ARTEmailSwipe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+ARTEmailSwipe.h"; sourceTree = "<group>"; };
 		34CF8752199E415000A6A1BF /* UIViewController+ARTEmailSwipe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+ARTEmailSwipe.m"; sourceTree = "<group>"; };
-		CAF7D49D199D4C18006B06F5 /* ARTEmailTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ARTEmailTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CAF7D49D199D4C18006B06F5 /* ARTEmailSwipeDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ARTEmailSwipeDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CAF7D4A1199D4C18006B06F5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CAF7D4A2199D4C18006B06F5 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		CAF7D4A4199D4C18006B06F5 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		CAF7D4A5199D4C18006B06F5 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		CAF7D4A8199D4C18006B06F5 /* ARTEmailTest.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ARTEmailTest.xcdatamodel; sourceTree = "<group>"; };
 		CAF7D4AA199D4C18006B06F5 /* ARTEmailSwipe.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ARTEmailSwipe.h; sourceTree = "<group>"; };
 		CAF7D4AB199D4C18006B06F5 /* ARTEmailSwipe.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ARTEmailSwipe.m; sourceTree = "<group>"; };
 		CAF7D4AE199D4C18006B06F5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CAF7D4B0199D4C18006B06F5 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		CAF7D4B6199D4C19006B06F5 /* ARTEmailTestTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ARTEmailTestTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		CAF7D4B6199D4C19006B06F5 /* ARTEmailSwipeDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ARTEmailSwipeDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CAF7D4BB199D4C19006B06F5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CAF7D4BC199D4C19006B06F5 /* ARTEmailTestTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ARTEmailTestTests.m; sourceTree = "<group>"; };
 		CAF7D4C6199D4FD0006B06F5 /* ARTRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARTRootViewController.h; sourceTree = "<group>"; };
@@ -110,8 +108,8 @@
 		CAF7D49E199D4C18006B06F5 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				CAF7D49D199D4C18006B06F5 /* ARTEmailTest.app */,
-				CAF7D4B6199D4C19006B06F5 /* ARTEmailTestTests.xctest */,
+				CAF7D49D199D4C18006B06F5 /* ARTEmailSwipeDemo.app */,
+				CAF7D4B6199D4C19006B06F5 /* ARTEmailSwipeDemoTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -130,7 +128,6 @@
 				34C9251D19A3511200AAC92D /* Second Stage */,
 				CAF7D4AD199D4C18006B06F5 /* Main.storyboard */,
 				CAF7D4B0199D4C18006B06F5 /* Images.xcassets */,
-				CAF7D4A7199D4C18006B06F5 /* ARTEmailTest.xcdatamodeld */,
 				CAF7D4A0199D4C18006B06F5 /* Supporting Files */,
 			);
 			path = ARTEmailTest;
@@ -176,9 +173,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		CAF7D49C199D4C18006B06F5 /* ARTEmailTest */ = {
+		CAF7D49C199D4C18006B06F5 /* ARTEmailSwipeDemo */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = CAF7D4C0199D4C19006B06F5 /* Build configuration list for PBXNativeTarget "ARTEmailTest" */;
+			buildConfigurationList = CAF7D4C0199D4C19006B06F5 /* Build configuration list for PBXNativeTarget "ARTEmailSwipeDemo" */;
 			buildPhases = (
 				CAF7D499199D4C18006B06F5 /* Sources */,
 				CAF7D49A199D4C18006B06F5 /* Frameworks */,
@@ -188,14 +185,14 @@
 			);
 			dependencies = (
 			);
-			name = ARTEmailTest;
+			name = ARTEmailSwipeDemo;
 			productName = ARTEmailTest;
-			productReference = CAF7D49D199D4C18006B06F5 /* ARTEmailTest.app */;
+			productReference = CAF7D49D199D4C18006B06F5 /* ARTEmailSwipeDemo.app */;
 			productType = "com.apple.product-type.application";
 		};
-		CAF7D4B5199D4C19006B06F5 /* ARTEmailTestTests */ = {
+		CAF7D4B5199D4C19006B06F5 /* ARTEmailSwipeDemoTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = CAF7D4C3199D4C19006B06F5 /* Build configuration list for PBXNativeTarget "ARTEmailTestTests" */;
+			buildConfigurationList = CAF7D4C3199D4C19006B06F5 /* Build configuration list for PBXNativeTarget "ARTEmailSwipeDemoTests" */;
 			buildPhases = (
 				CAF7D4B2199D4C19006B06F5 /* Sources */,
 				CAF7D4B3199D4C19006B06F5 /* Frameworks */,
@@ -206,9 +203,9 @@
 			dependencies = (
 				CAF7D4B8199D4C19006B06F5 /* PBXTargetDependency */,
 			);
-			name = ARTEmailTestTests;
+			name = ARTEmailSwipeDemoTests;
 			productName = ARTEmailTestTests;
-			productReference = CAF7D4B6199D4C19006B06F5 /* ARTEmailTestTests.xctest */;
+			productReference = CAF7D4B6199D4C19006B06F5 /* ARTEmailSwipeDemoTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -230,7 +227,7 @@
 					};
 				};
 			};
-			buildConfigurationList = CAF7D498199D4C18006B06F5 /* Build configuration list for PBXProject "ARTEmailTest" */;
+			buildConfigurationList = CAF7D498199D4C18006B06F5 /* Build configuration list for PBXProject "ARTEmailSwipeDemo" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -243,8 +240,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				CAF7D49C199D4C18006B06F5 /* ARTEmailTest */,
-				CAF7D4B5199D4C19006B06F5 /* ARTEmailTestTests */,
+				CAF7D49C199D4C18006B06F5 /* ARTEmailSwipeDemo */,
+				CAF7D4B5199D4C19006B06F5 /* ARTEmailSwipeDemoTests */,
 			);
 		};
 /* End PBXProject section */
@@ -276,7 +273,6 @@
 				34C9251819A34F8800AAC92D /* ARTSecondViewController.m in Sources */,
 				CAF7D4A6199D4C18006B06F5 /* AppDelegate.m in Sources */,
 				CAF7D4CB199D508A006B06F5 /* ARTCenterViewController.m in Sources */,
-				CAF7D4A9199D4C18006B06F5 /* ARTEmailTest.xcdatamodeld in Sources */,
 				CAF7D4AC199D4C18006B06F5 /* ARTEmailSwipe.m in Sources */,
 				34C9251B19A3510000AAC92D /* ARTNewCenterViewController.m in Sources */,
 				CAF7D4CE199D510C006B06F5 /* ARTBottomViewController.m in Sources */,
@@ -299,7 +295,7 @@
 /* Begin PBXTargetDependency section */
 		CAF7D4B8199D4C19006B06F5 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = CAF7D49C199D4C18006B06F5 /* ARTEmailTest */;
+			target = CAF7D49C199D4C18006B06F5 /* ARTEmailSwipeDemo */;
 			targetProxy = CAF7D4B7199D4C19006B06F5 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -401,7 +397,7 @@
 				INFOPLIST_FILE = ARTEmailTest/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = ARTEmailSwipeDemo;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -415,7 +411,7 @@
 				INFOPLIST_FILE = ARTEmailTest/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = ARTEmailSwipeDemo;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -434,7 +430,7 @@
 				);
 				INFOPLIST_FILE = ARTEmailTestTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = ARTEmailSwipeDemoTests;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ARTEmailTest.app/ARTEmailTest";
 			};
 			name = Debug;
@@ -449,7 +445,7 @@
 				);
 				INFOPLIST_FILE = ARTEmailTestTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = ARTEmailSwipeDemoTests;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ARTEmailTest.app/ARTEmailTest";
 			};
 			name = Release;
@@ -457,7 +453,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		CAF7D498199D4C18006B06F5 /* Build configuration list for PBXProject "ARTEmailTest" */ = {
+		CAF7D498199D4C18006B06F5 /* Build configuration list for PBXProject "ARTEmailSwipeDemo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				CAF7D4BE199D4C19006B06F5 /* Debug */,
@@ -466,7 +462,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		CAF7D4C0199D4C19006B06F5 /* Build configuration list for PBXNativeTarget "ARTEmailTest" */ = {
+		CAF7D4C0199D4C19006B06F5 /* Build configuration list for PBXNativeTarget "ARTEmailSwipeDemo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				CAF7D4C1199D4C19006B06F5 /* Debug */,
@@ -475,7 +471,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		CAF7D4C3199D4C19006B06F5 /* Build configuration list for PBXNativeTarget "ARTEmailTestTests" */ = {
+		CAF7D4C3199D4C19006B06F5 /* Build configuration list for PBXNativeTarget "ARTEmailSwipeDemoTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				CAF7D4C4199D4C19006B06F5 /* Debug */,
@@ -485,19 +481,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		CAF7D4A7199D4C18006B06F5 /* ARTEmailTest.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				CAF7D4A8199D4C18006B06F5 /* ARTEmailTest.xcdatamodel */,
-			);
-			currentVersion = CAF7D4A8199D4C18006B06F5 /* ARTEmailTest.xcdatamodel */;
-			path = ARTEmailTest.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = CAF7D495199D4C18006B06F5 /* Project object */;
 }

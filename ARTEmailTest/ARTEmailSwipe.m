@@ -26,11 +26,15 @@
 
 #import "ARTEmailSwipe.h"
 
+#define ISIOS6    ([[[UIDevice currentDevice] systemVersion] floatValue] < 7 && [[[UIDevice currentDevice] systemVersion] floatValue] >= 6)
+
+
 static CGFloat const ARTDefaultBottomViewDistanceFromTop = 40.f;
 static CGFloat const ARTDefaultBottomViewClosedHeight = 46.f;
 static CGFloat const ARTDefaultBounceOffset = 5.f;
 static CGFloat const ARTDefaultBounceDuration = 0.2f;
 static CGFloat const ARTDefaultBottomCenterViewOffset = 5.f;
+static CGFloat const ARTStatusBar = 20.f;
 
 @interface ARTEmailSwipe ()
 
@@ -68,7 +72,7 @@ static CGFloat const ARTDefaultBottomCenterViewOffset = 5.f;
 {
   self.status = ARTOpenTypeClosed;
   self.bottomViewClosedHeight = ARTDefaultBottomViewClosedHeight;
-  self.bottomViewDistanceFromTop = ARTDefaultBottomViewDistanceFromTop;
+  self.bottomViewDistanceFromTop = ARTDefaultBottomViewDistanceFromTop - (ISIOS6 ? 20 : 0);;
   self.bounceOffset = ARTDefaultBounceOffset;
   self.bounceAnimationDuration = ARTDefaultBounceDuration;
   self.bottomCenterViewOffset = ARTDefaultBottomCenterViewOffset;
@@ -76,6 +80,8 @@ static CGFloat const ARTDefaultBottomCenterViewOffset = 5.f;
 
 - (void)viewDidLoad;
 {
+  self.view.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+  
   self.dragOffset =  self.view.bounds.size.height - (self.view.bounds.size.height / 4);
   self.transformOffset =  self.view.bounds.size.height - (self.view.bounds.size.height / 2);
   
@@ -85,6 +91,9 @@ static CGFloat const ARTDefaultBottomCenterViewOffset = 5.f;
   self.bottomViewContainer = [[UIView alloc] initWithFrame:self.view.bounds];
   self.bottomViewContainer.frame =  self.view.bounds;
   self.bottomViewContainer.clipsToBounds = YES;
+  
+  self.bottomViewContainer.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleHeight;
+  self.centerViewContainer.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
   
   [self.view addSubview:self.bottomViewContainer];
   [self.view addSubview:self.centerViewContainer];
@@ -136,8 +145,8 @@ static CGFloat const ARTDefaultBottomCenterViewOffset = 5.f;
     
     if (!_bottomViewController.view.superview) {
       
-      CGRect frame = self.bottomViewContainer.bounds;
-      frame.origin.y = self.view.bounds.size.height - self.bottomViewClosedHeight;
+      CGRect frame = self.view.bounds;
+      frame.origin.y = (self.view.bounds.size.height - self.bottomViewClosedHeight);
       frame.size.height = self.bottomViewClosedHeight;
       self.bottomViewContainer.frame = frame;
       
@@ -237,8 +246,9 @@ static CGFloat const ARTDefaultBottomCenterViewOffset = 5.f;
   [UIView animateWithDuration:0.5f animations:^{
     CGRect frame = self.view.bounds;
     
-    frame.origin.y = open ? self.bottomViewDistanceFromTop : (frame.size.height - self.bottomViewClosedHeight) + self.bounceOffset;
-    frame.size.height = open ? frame.size.height - self.bottomViewDistanceFromTop : self.bottomViewClosedHeight;
+    self.bottomViewController.view.frame = frame;
+    frame.origin.y = openType == ARTOpenTypeClosed ? frame.size.height : open ? self.bottomViewDistanceFromTop : ((frame.size.height - self.bottomViewClosedHeight) + self.bounceOffset);
+    frame.size.height = open ? frame.size.height - self.bottomViewDistanceFromTop : self.bottomViewClosedHeight + (ISIOS6 ? ARTStatusBar : 0);
     self.bottomViewContainer.frame = frame;
     self.centerViewContainer.transform = open ? CGAffineTransformMakeScale(0.9, 0.9) : CGAffineTransformMakeScale(1, 1);
     
@@ -280,6 +290,8 @@ static CGFloat const ARTDefaultBottomCenterViewOffset = 5.f;
     
     if (origin < self.transformOffset) {
       CGFloat scale = ((origin / self.transformOffset) / 10) + 0.9;
+      scale = scale > 1 ? 1 : scale < 0.9 ? 0.9 : scale;
+      
       self.centerViewContainer.transform = CGAffineTransformMakeScale(scale, scale);
       self.disableStatusBarAnimation ? : [[UIApplication sharedApplication] setStatusBarStyle: UIStatusBarStyleLightContent animated:YES];
     } else {
@@ -307,8 +319,8 @@ static CGFloat const ARTDefaultBottomCenterViewOffset = 5.f;
   [self adjustCenterFrame];
   [self adjustBottomFrame];
 
-  self.dragOffset =  self.view.frame.size.height - (self.view.frame.size.height / (toInterfaceOrientation == UIInterfaceOrientationLandscapeRight || toInterfaceOrientation == UIInterfaceOrientationLandscapeLeft ? 3 : 4));
-  self.transformOffset =  self.view.frame.size.height - (self.view.frame.size.height / 2);
+  self.dragOffset =  self.view.bounds.size.height - (self.view.bounds.size.height / 4);
+  self.transformOffset =  self.view.bounds.size.height - (self.view.bounds.size.height / 2);
 }
 
 - (void)adjustCenterFrame;
