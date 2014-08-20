@@ -98,7 +98,7 @@ static CGFloat const ARTStatusBar = 20.f;
   [self.view addSubview:self.bottomViewContainer];
   [self.view addSubview:self.centerViewContainer];
   
-  [self addCenterView];
+  [self addView:self.centerViewContainer withContainer:self.centerViewController];
 }
 
 - (void)setCenterViewController:(UIViewController *)centerView;
@@ -113,16 +113,15 @@ static CGFloat const ARTStatusBar = 20.f;
       [_centerViewController didMoveToParentViewController:self];
     }
   }
-  [self addCenterView];
+  [self addView:self.centerViewContainer withContainer:_centerViewController];
 }
 
-- (void)addCenterView;
+- (void)addView:(UIView *)view withContainer:(UIViewController *)container;
 {
-  _centerViewController.view.frame = self.centerViewContainer.bounds;
-  [self addChildViewController:_centerViewController];
-  [self.centerViewContainer addSubview:_centerViewController.view];
-  [_centerViewController didMoveToParentViewController:self];
-  
+  container.view.frame = view.bounds;
+  [self addChildViewController:container];
+  [view addSubview:container.view];
+  [container didMoveToParentViewController:self];
 }
 
 - (void)setBottomViewController:(UIViewController *)bottomView;
@@ -137,7 +136,10 @@ static CGFloat const ARTStatusBar = 20.f;
       [_bottomViewController didMoveToParentViewController:self];
     }
   }
+  
+  [self addView:self.bottomViewContainer withContainer:_bottomViewController];
 }
+
 
 - (void)loadBottomView:(ARTOpenType)openType;
 {

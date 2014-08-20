@@ -24,8 +24,8 @@
 
 - (IBAction)changeCenterView:(id)sender;
 {
-  UIViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"ARTSecondCenterViewControllerIdentifier"];
-  [self.slideViewController setCenterViewController:vc];
+  UIViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"ARTBottomViewControllerIdentifier"];
+  [self.slideViewController setBottomViewController:vc];
 }
 
 @end

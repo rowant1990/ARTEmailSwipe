@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "CAF7D49C199D4C18006B06F5"
-               BuildableName = "ARTEmailTest.app"
+               BuildableName = "ARTEmailSwipeDemo.app"
                BlueprintName = "ARTEmailSwipeDemo"
                ReferencedContainer = "container:ARTEmailSwipeDemo.xcodeproj">
             </BuildableReference>
@@ -33,7 +33,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "CAF7D4B5199D4C19006B06F5"
-               BuildableName = "ARTEmailTestTests.xctest"
+               BuildableName = "ARTEmailSwipeDemoTests.xctest"
                BlueprintName = "ARTEmailSwipeDemoTests"
                ReferencedContainer = "container:ARTEmailSwipeDemo.xcodeproj">
             </BuildableReference>
@@ -43,7 +43,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "CAF7D49C199D4C18006B06F5"
-            BuildableName = "ARTEmailTest.app"
+            BuildableName = "ARTEmailSwipeDemo.app"
             BlueprintName = "ARTEmailSwipeDemo"
             ReferencedContainer = "container:ARTEmailSwipeDemo.xcodeproj">
          </BuildableReference>
@@ -62,7 +62,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "CAF7D49C199D4C18006B06F5"
-            BuildableName = "ARTEmailTest.app"
+            BuildableName = "ARTEmailSwipeDemo.app"
             BlueprintName = "ARTEmailSwipeDemo"
             ReferencedContainer = "container:ARTEmailSwipeDemo.xcodeproj">
          </BuildableReference>
@@ -80,7 +80,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "CAF7D49C199D4C18006B06F5"
-            BuildableName = "ARTEmailTest.app"
+            BuildableName = "ARTEmailSwipeDemo.app"
             BlueprintName = "ARTEmailSwipeDemo"
             ReferencedContainer = "container:ARTEmailSwipeDemo.xcodeproj">
          </BuildableReference>
