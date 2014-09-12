@@ -166,6 +166,10 @@ static CGFloat const ARTStatusBar = 20.f;
       frame.size.height = self.bottomViewClosedHeight;
       self.bottomViewContainer.frame = frame;
       
+      frame =  _bottomViewController.view.frame;
+      frame.size.width = self.view.bounds.size.width;
+      _bottomViewController.view.frame = frame;
+      
       [self.bottomViewContainer addSubview:_bottomViewController.view];
     }
     

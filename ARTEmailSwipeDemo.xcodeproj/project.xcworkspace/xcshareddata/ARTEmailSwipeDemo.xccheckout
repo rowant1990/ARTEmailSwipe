@@ -12,22 +12,34 @@
 	<dict>
 		<key>4EDE2BED-F4A8-4E8E-BD0D-1DE45EE01200</key>
 		<string>ssh://github.com/rowant1990/ARTEmailSwipe.git</string>
+		<key>BE55AF9CE1A87DCDCDC42B2F88F868946947ECD2</key>
+		<string>https://github.com/rowant1990/ARTEmailSwipe.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>ARTEmailSwipeDemo.xcodeproj/project.xcworkspace</string>
+	<string>ARTEmailSwipeDemo.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>4EDE2BED-F4A8-4E8E-BD0D-1DE45EE01200</key>
+		<string>../../../artiosemailswipecontainer</string>
+		<key>BE55AF9CE1A87DCDCDC42B2F88F868946947ECD2</key>
 		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>ssh://github.com/rowant1990/ARTEmailSwipe.git</string>
+	<string>https://github.com/rowant1990/ARTEmailSwipe.git</string>
 	<key>IDESourceControlProjectVersion</key>
-	<integer>110</integer>
+	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>4EDE2BED-F4A8-4E8E-BD0D-1DE45EE01200</string>
+	<string>BE55AF9CE1A87DCDCDC42B2F88F868946947ECD2</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>BE55AF9CE1A87DCDCDC42B2F88F868946947ECD2</string>
+			<key>IDESourceControlWCCName</key>
+			<string>ARTEmailSwipe</string>
+		</dict>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
